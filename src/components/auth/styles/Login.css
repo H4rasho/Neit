@@ -1,0 +1,58 @@
+body
+{    
+    background-image: linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)),
+                      url(https://www.utem.cl/wp-content/uploads/2017/04/casa-central-01.jpg);
+
+    background-size: 110%;       
+}
+
+.main-section
+{
+    margin: 0 auto;
+    margin-top: 30%;
+    padding: 0;
+    width: 55%;
+}
+
+.main-section2
+{
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 0;
+    width: 55%;
+    font-size: 13px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(9, 54, 80);
+    background: rgba(34, 153, 189, 0.7);
+    border-radius: 13px 13px 13px 13px;
+}
+
+
+.modal-content
+{
+    background-color: #ffffff;
+    opacity: .95;;
+    padding: 0 30px;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0px 0px 10px #181818;
+}
+
+.user-img
+{
+    margin-top: -30px;
+    margin-bottom: 35px;
+}
+
+.user-img img
+{   
+    width: 80px;
+    height: 100px;
+
+}
+
+.forgot
+{
+    font-size: 12px;
+}
+

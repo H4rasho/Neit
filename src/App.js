@@ -1,9 +1,9 @@
-import { Login } from "./components/auth/Login";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      < AppRouter />
     </div>
   );
 }
