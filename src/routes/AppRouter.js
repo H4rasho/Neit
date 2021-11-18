@@ -1,26 +1,38 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Login } from "../components/auth/Login";
-import { Home } from "../components/home/Home";
+import { Navbar } from "../components/ui/Navbar";
+
+import { InscriptionRoutes } from "./InscriptionRoutes";
+import { PrivateRoutes } from "./PrivateRoutes";
+import { PublicRoutes } from "./PublicRoutes";
 
 export default function AppRouter() {
+  let isLogged;
+
+  if (process.env.NODE_ENV === "development") {
+    isLogged = true;
+  } else {
+    isLogged = false;
+  }
+
   return (
     <Router>
       <div>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
+        <Navbar />
         <Switch>
-          <Route path="/Login">
-            <Login />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <PublicRoutes
+            path="/login"
+            component={Login}
+            isAuthenticated={isLogged}
+          />
+          <PrivateRoutes
+            path="/"
+            component={InscriptionRoutes}
+            isAuthenticated={isLogged}
+          />
         </Switch>
       </div>
     </Router>
