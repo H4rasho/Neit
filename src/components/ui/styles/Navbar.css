@@ -1,0 +1,23 @@
+.divUno
+{
+    background-color: #29af87;
+}
+
+.divUno h1
+{
+    margin-left: 1%
+}
+
+.navm
+{
+    margin-top: -0.6%;
+    background-color: #29af87;
+
+}
+
+.navm li:hover
+{
+    background-color: #117456;
+    transition: background-color .7s;
+    border-radius: 3px 3px 3px 3px;
+}
