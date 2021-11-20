@@ -6,7 +6,7 @@ export const Navbar = () => {
   return (
     <div>
           <div className="divUno">
-            <h1>Sistema de inscripción UTEM</h1>
+            <h1 className="titulo">Sistema de inscripción UTEM</h1>
           </div>
         
           <nav className="navbar navbar-expand-lg navbar-dark navm">
@@ -20,7 +20,7 @@ export const Navbar = () => {
                       <Link className="nav-link active"  to="/Home">Inicio</Link> 
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link active"  to="/Inscripcion">Inscripcion de ramos</Link> 
+                      <Link className="nav-link active"  to="/Inscripcion">Inscripción de ramos</Link> 
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link active" to="/Horario">Mi horario</Link> 

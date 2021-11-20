@@ -5,11 +5,11 @@ export const Inscripcion = () => {
   return (
     <div>
         <div className="row m-1">
-          <div className="col-2 bg-primary columna1">
-            <div className="bg-success">Asignaturas por inscribir</div>
-            <div className="bg-warning mt-3">Lista de asignaturas</div>
+          <div className="border border-3 border-dark col-2 bg-light columna1">
+            <div className="border-bottom border-3 border-dark text-center marco1">Asignaturas por inscribir</div>
+            <div className="marco2">Lista de asignaturas: </div>
           </div>
-          <div className="col-8 columna2">
+          <div className="table-responsive col-8 columna2">
             <table className="table table-bordered table-striped border-light text-center Thorario">
               <thead>
                 <tr>
@@ -117,7 +117,42 @@ export const Inscripcion = () => {
               </tbody>
             </table>
           </div>
-          <div className="col-2 bg-danger columna3">DIV 3</div>
+          <div className="border border-3 border-dark col-2 bg-light columna3">
+            <div className="border-bottom border-3 border-dark text-center marco3">Asignaturas seleccionadas</div>
+            <div className="marco4">Limite de ramos: </div>
+          </div>             
+        </div>
+        <div className="row m-1">
+          <div className="border border-3 border-dark col-2 bg-light columna1">
+            <div className="border-bottom border-3 border-dark text-center marco1">Asignaturas por inscribir</div>
+            <div className="marco2">Lista de asignaturas: </div>
+          </div>
+          <div className="table-responsive col-8 columna2">
+            <table className="table table-bordered table-striped border-light text-center Thorario">
+              <thead>
+                <tr>
+                  <th scope="row" colspan="2">Codigo</th>
+                  <th scope="row" colspan="2">Asignatura</th>
+                  <th scope="col" colspan="2">Profesor</th>
+                  <th scope="col" colspan="2">Sección</th>
+                  <th scope="col" colspan="2">Bloque</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>             
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="border border-3 border-dark col-2 bg-light columna3">
+            <div className="border-bottom border-3 border-dark text-center marco3">Asignaturas seleccionadas</div>
+            <div className="marco4">Limite de ramos: </div>
+          </div>             
         </div>
     </div>
   );

@@ -1,18 +1,18 @@
+.titulo
+{
+    margin-left: 10px;
+}
+
 .divUno
 {
     background-color: #29af87;
-}
-
-.divUno h1
-{
-    margin-left: 1%
+    height: 50px;
+    color: white;
 }
 
 .navm
 {
-    margin-top: -0.6%;
     background-color: #29af87;
-
 }
 
 .navm li:hover

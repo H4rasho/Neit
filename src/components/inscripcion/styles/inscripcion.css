@@ -2,8 +2,56 @@
 {
     width: 90%;
     margin-top: 5%;
-    margin-left: 5.5%;
-    font-size: 12px;
+    margin-left: 4%;
+    font-size: 1vw;
     color: rgb(34, 34, 34);
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(236, 236, 236);
+}
+
+.columna1
+{
+    border: rgb(49, 49, 49);
+    font-size: 1.1vw;
+}
+
+
+
+.marco1
+{   
+    height: 30px;
+    margin-top: -2px;
+    margin-left: -13px;
+    margin-right: -13px;
+    color: #117456;
+}
+
+.marco2
+{
+    margin-left: -6px;
+    margin-right: -12px;
+    color: #117456;
+    font-size: 1.1vw;
+}
+
+.marco3
+{   
+    height: 30px;
+    margin-top: -2px;
+    margin-left: -13px;
+    margin-right: -13px;
+    color: #117456;
+}
+
+.marco4
+{
+    margin-left: -6px;
+    margin-right: -12px;
+    color: #117456;
+    font-size: 1.1vw;
+}
+
+.columna3
+{
+    border: rgb(49, 49, 49);
+    font-size: 1.1vw;
 }
