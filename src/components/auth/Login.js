@@ -4,6 +4,7 @@ import './styles/Login.css';
 export const Login = () => {
   return (
     <div>
+      
       <div class="modal-dialog text-center">
           <div class="col-sm-8 main-section">
             <div class="modal-content user-img">
@@ -35,7 +36,6 @@ export const Login = () => {
           <p><b>Estimado estudiante:</b> Recuerde que sus credenciales de acceso son de carácter personal, confidencial e intransferible. </p>  
         </div>  
       </div>
-
 
     </div>
   );
