@@ -7,7 +7,7 @@ export const Inscripcion = () => {
         <div className="row m-1">
           <div className="border border-3 border-dark col-2 bg-light columna1">
             <div className="border-bottom border-3 border-dark text-center marco1">Asignaturas por inscribir</div>
-            <div className="marco2">Lista de asignaturas: </div>
+            <div className="border-bottom marco2">Lista de asignaturas: </div>
           </div>
           <div className="table-responsive col-8 columna2">
             <table className="table table-bordered table-striped border-light text-center Thorario">
@@ -119,13 +119,33 @@ export const Inscripcion = () => {
           </div>
           <div className="border border-3 border-dark col-2 bg-light columna3">
             <div className="border-bottom border-3 border-dark text-center marco3">Asignaturas seleccionadas</div>
-            <div className="marco4">Limite de ramos: </div>
+            <div className="border-bottom marco2">Limite de ramos:</div>
           </div>             
         </div>
         <div className="row m-1">
           <div className="border border-3 border-dark col-2 bg-light columna1">
-            <div className="border-bottom border-3 border-dark text-center marco1">Asignaturas por inscribir</div>
-            <div className="marco2">Lista de asignaturas: </div>
+            <div className="border-bottom border-3 border-dark text-center marco1"> Detalles de Inscripcion </div>
+            <div className="marco2">Informacion resumida de la asignatura seleccionada</div>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+             Launch demo modal
+             </button>
+             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                 <div class="modal-content">
+                   <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">
+                     ...
+                   </div>
+                   <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                     <button type="button" class="btn btn-primary">Save changes</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
           </div>
           <div className="table-responsive col-8 columna2">
             <table className="table table-bordered table-striped border-light text-center Thorario">
@@ -140,18 +160,18 @@ export const Inscripcion = () => {
               </thead>
               <tbody>
                 <tr>             
-                  <td colspan="2"></td>
-                  <td colspan="2"></td>
-                  <td colspan="2"></td>
-                  <td colspan="2"></td>
-                  <td colspan="2"></td>
+                  <td colspan="2"> - </td>
+                  <td colspan="2"> - </td>
+                  <td colspan="2"> - </td>
+                  <td colspan="2"> - </td>
+                  <td colspan="2"> - </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div className="border border-3 border-dark col-2 bg-light columna3">
-            <div className="border-bottom border-3 border-dark text-center marco3">Asignaturas seleccionadas</div>
-            <div className="marco4">Limite de ramos: </div>
+            <div className="border-bottom border-3 border-dark text-center marco3"> Avisos </div>
+            <div className="marco4">Descripcion del Error por tope de horarios</div>
           </div>             
         </div>
     </div>
