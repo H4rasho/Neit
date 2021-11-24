@@ -8,13 +8,7 @@ import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
 
 export default function AppRouter() {
-  let isLogged;
-
-  if (process.env.NODE_ENV === "development") {
-    isLogged = true;
-  } else {
-    isLogged = false;
-  }
+  let isLogged = true;
 
   return (
     <Router>
