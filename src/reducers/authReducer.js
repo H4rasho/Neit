@@ -12,21 +12,12 @@ export const authReducer = (state = initialState, action) => {
         checking: false,
         ...action.payload,
       };
-
     case types.authCheckingFinish:
       return {
         ...state,
         checking: false,
       };
 
-    case types.upDateBestScore:
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          bestScore: action.payload,
-        },
-      };
     case types.authLogout:
       return {
         checking: false,
