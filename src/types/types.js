@@ -5,6 +5,7 @@ export const types = {
   authStartRegister: "[auth] Start Register",
   authStartTokenRenew: "[auth] Start Token renew",
   authLogout: "[auth] Logout",
-
   login: "[Auth] Login",
+
+  inscripcionGetAsginaturas: "[incripcion] Get Asignaturas",
 };

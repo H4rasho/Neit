@@ -5,7 +5,6 @@ import { types } from "../types/types";
 export const startlogin = (email, password) => {
   return async (dispatch) => {
     const resp = await fetchSinToken("auth", { email, password }, "POST");
-    console.log(resp);
     const body = await resp.json();
     if (body.ok) {
       localStorage.setItem("token", body.token);
@@ -14,30 +13,7 @@ export const startlogin = (email, password) => {
         login({
           uid: body.uid,
           name: body.name,
-        })
-      );
-    } else {
-      Swal.fire("Error", body.msg, "error");
-    }
-  };
-};
-
-export const startRegister = (email, password, name) => {
-  return async (dispatch) => {
-    const resp = await fetchSinToken(
-      "auth/new",
-      { email, password, name },
-      "POST"
-    );
-    const body = await resp.json();
-
-    if (body.ok) {
-      localStorage.setItem("token", body.token);
-      localStorage.setItem("token-init-date", new Date().getTime());
-      dispatch(
-        login({
-          uid: body.uid,
-          name: body.name,
+          carrera: body.carrera,
         })
       );
     } else {
@@ -49,11 +25,6 @@ export const startRegister = (email, password, name) => {
 export const cargarNombre = (user) => ({
   type: types.login,
   payload: user,
-});
-
-export const upDateBestScore = (rank) => ({
-  type: types.upDateBestScore,
-  payload: rank,
 });
 
 export const startChecking = () => {
@@ -68,6 +39,7 @@ export const startChecking = () => {
         login({
           uid: body.uid,
           name: body.name,
+          carrera: body.carrera,
         })
       );
     } else {
