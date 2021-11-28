@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { startChecking } from "../actions/auth";
 import { Login } from "../components/auth/Login";
-import { Navbar } from "../components/ui/Navbar";
 
 import { InscriptionRoutes } from "./InscriptionRoutes";
 import { PrivateRoutes } from "./PrivateRoutes";
@@ -22,14 +21,9 @@ export default function AppRouter() {
     return <h5>Espere</h5>;
   }
 
-  if (process.env.NODE_ENV === "development") {
-    isLogin = true;
-  }
-
   return (
     <Router>
       <div>
-        <Navbar />
         <Switch>
           <PublicRoutes
             path="/auth"

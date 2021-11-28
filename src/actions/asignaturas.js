@@ -7,7 +7,6 @@ export const startGetAsignaturas = (idEstudiante, idCarrera) => {
       `asignaturas?idEstudiante=${idEstudiante}&idCarrera=${idCarrera}`
     );
     const body = await resp.json();
-    console.log(idCarrera);
 
     if (body.ok) {
       dispatch(getAsignaturas(body.ramos));

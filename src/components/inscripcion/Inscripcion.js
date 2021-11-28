@@ -1,7 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { AsignaturaModal } from "./AsignaturaModal";
 import "./styles/inscripcion.css";
 
 export const Inscripcion = () => {
+  const { asignaturas } = useSelector((state) => state.inscripcion);
+
   return (
     <div>
       <div className="row m-1">
@@ -10,53 +14,13 @@ export const Inscripcion = () => {
             Asignaturas por inscribir
           </div>
           <div className="border-bottom marco2">Lista de asignaturas: </div>
-
-          <button type="button" className="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Taller de sistemas de información
-          </button>
-
-
-          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">Información de la asignatura</h5>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div className="modal-body">
-                    ...
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" className="btn btn-primary">Inscribir asignatura</button>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <button type="button" className="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Cálculo I
-          </button>
-
-
-          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">Información de la asignatura</h5>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div className="modal-body">
-                    ...
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" className="btn btn-primary">Inscribir asignatura</button>
-                  </div>
-                </div>
-              </div>
-          </div>
-
+          {asignaturas ? (
+            asignaturas.map((asig) => (
+              <AsignaturaModal asignatura={asig} key={asig._id} />
+            ))
+          ) : (
+            <h1>No hay asignaturas</h1>
+          )}
         </div>
         <div className="table-responsive col-8 columna2">
           <table className="table table-bordered table-striped border-light text-center Thorario">

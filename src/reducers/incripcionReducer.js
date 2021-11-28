@@ -1,7 +1,7 @@
 import { types } from "../types/types";
 
 const initialState = {
-  asignaturas: null,
+  asignaturas: [],
 };
 
 export const incripcionReducer = (state = initialState, action) => {
