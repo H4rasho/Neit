@@ -1,16 +1,7 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { startGetAsignaturas } from "../../actions/asignaturas";
+import React from "react";
 import "./styles/inscripcion.css";
 
 export const Inscripcion = () => {
-  const { uid, carrera } = useSelector((state) => state.auth);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (uid && carrera) dispatch(startGetAsignaturas(uid, carrera));
-  }, [dispatch, uid, carrera]);
-
   return (
     <div>
       <div className="row m-1">

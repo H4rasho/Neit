@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { startChecking, startlogin } from "../actions/auth";
+import { startChecking } from "../actions/auth";
 import { Login } from "../components/auth/Login";
 import { Navbar } from "../components/ui/Navbar";
 
@@ -16,13 +16,14 @@ export default function AppRouter() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(startChecking());
-    if (process.env.NODE_ENV === "development") {
-      dispatch(startlogin("thomas.sepulvedat@utem.cl", "123456"));
-    }
   }, [dispatch]);
 
   if (checking) {
     return <h5>Espere</h5>;
+  }
+
+  if (process.env.NODE_ENV === "development") {
+    isLogin = true;
   }
 
   return (
