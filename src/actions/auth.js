@@ -8,6 +8,12 @@ export const startlogin = (email, password) => {
     console.log(resp);
     const body = await resp.json();
     if (body.ok) {
+      Swal.fire({
+        title: 'Has iniciado correctamente',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 2000
+      });
       localStorage.setItem("token", body.token);
       localStorage.setItem("token-init-date", new Date().getTime());
       dispatch(
@@ -18,7 +24,13 @@ export const startlogin = (email, password) => {
         })
       );
     } else {
-      Swal.fire("Error", body.msg, "error");
+      Swal.fire({
+        title: 'No has iniciado sesión',
+        icon: 'error',
+        showConfirmButton: false,
+        footer: 'Revisa tus credenciales',
+        timer: 2000
+      });
     }
   };
 };
