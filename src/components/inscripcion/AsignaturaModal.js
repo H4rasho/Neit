@@ -32,7 +32,20 @@ export const AsignaturaModal = ({ asignatura }) => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">...</div>
+            <div className="modal-body">             
+              <div class="form-check">
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></input>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Sección
+                  <div class="card">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Profesor: </li>
+                      <li class="list-group-item">Horario: </li>
+                    </ul>
+                  </div>
+                </label>
+              </div>
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
