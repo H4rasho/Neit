@@ -1,6 +1,26 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  activarAsignatura,
+  inscribirAsignautra,
+} from "../../actions/asignaturas";
+import { haceTope } from "../../helpers/haceTope";
 
 export const AsignaturaModal = ({ asignatura }) => {
+  const { inscripcion, activeAsginatura } = useSelector(
+    (state) => state.inscripcion
+  );
+  const dispatch = useDispatch();
+
+  const handleActiveAsginatura = (asignatura) => {
+    dispatch(activarAsignatura(asignatura));
+  };
+
+  const inscribirAsignatura = () => {
+    if (!haceTope(activeAsginatura, inscripcion))
+      dispatch(inscribirAsignautra(activeAsginatura));
+  };
+
   return (
     <>
       <button
@@ -8,8 +28,9 @@ export const AsignaturaModal = ({ asignatura }) => {
         className="btn btn-primary m-1 asignatura"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
+        onClick={() => handleActiveAsginatura(asignatura)}
       >
-        {asignatura.id.nombre}
+        {asignatura.nombre}
       </button>
 
       <div
@@ -41,7 +62,12 @@ export const AsignaturaModal = ({ asignatura }) => {
               >
                 Cerrar
               </button>
-              <button type="button" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-bs-dismiss="modal"
+                onClick={inscribirAsignatura}
+              >
                 Inscribir asignatura
               </button>
             </div>

@@ -8,4 +8,6 @@ export const types = {
   login: "[Auth] Login",
 
   inscripcionGetAsginaturas: "[Incripcion] obtener asignaturas ",
+  incripcionActiva: "[Incripcion] activa",
+  inscribirAsignaturas: "[Incripcion} inscribir asignatura",
 };

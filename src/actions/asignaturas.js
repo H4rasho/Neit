@@ -16,7 +16,17 @@ export const startGetAsignaturas = (idEstudiante, idCarrera) => {
   };
 };
 
+export const activarAsignatura = (asignatura) => ({
+  type: types.incripcionActiva,
+  payload: asignatura,
+});
+
 const getAsignaturas = (asginatruas) => ({
   type: types.inscripcionGetAsginaturas,
   payload: asginatruas,
+});
+
+export const inscribirAsignautra = (asignatura) => ({
+  type: types.inscribirAsignaturas,
+  payload: asignatura,
 });

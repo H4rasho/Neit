@@ -4,7 +4,9 @@ import { AsignaturaModal } from "./AsignaturaModal";
 import "./styles/inscripcion.css";
 
 export const Inscripcion = () => {
-  const { asignaturas } = useSelector((state) => state.inscripcion);
+  const { asignaturas, inscripcion } = useSelector(
+    (state) => state.inscripcion
+  );
 
   return (
     <div>
@@ -16,7 +18,7 @@ export const Inscripcion = () => {
           <div className="border-bottom marco2">Lista de asignaturas: </div>
           {asignaturas ? (
             asignaturas.map((asig) => (
-              <AsignaturaModal asignatura={asig} key={asig._id} />
+              <AsignaturaModal asignatura={asig.id} key={asig._id} />
             ))
           ) : (
             <h1>No hay asignaturas</h1>
@@ -164,11 +166,15 @@ export const Inscripcion = () => {
             </tbody>
           </table>
         </div>
+
         <div className="border border-3 border-dark col-2 bg-light columna3">
           <div className="border-bottom border-3 border-dark text-center marco3">
             Asignaturas seleccionadas
           </div>
           <div className="border-bottom marco2">Limite de ramos:</div>
+          {inscripcion.map((inscr) => (
+            <h3 key={inscr.id}>{inscr.nombre}</h3>
+          ))}
         </div>
       </div>
       <div className="row m-1">
@@ -177,9 +183,6 @@ export const Inscripcion = () => {
           <table className="table table-bordered table-striped border-light text-center Tseccion">
             <thead>
               <tr>
-                <th scope="row" colSpan="2">
-                  Codigo
-                </th>
                 <th scope="row" colSpan="2">
                   Asignatura
                 </th>
@@ -195,13 +198,11 @@ export const Inscripcion = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td colSpan="2"> - </td>
-                <td colSpan="2"> - </td>
-                <td colSpan="2"> - </td>
-                <td colSpan="2"> - </td>
-                <td colSpan="2"> - </td>
-              </tr>
+              {inscripcion.map((insc) => (
+                <tr key={insc.id}>
+                  <td colSpan="2">{insc.nombre}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
