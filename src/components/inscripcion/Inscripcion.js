@@ -18,7 +18,7 @@ export const Inscripcion = () => {
           <div className="border-bottom marco2">Lista de asignaturas: </div>
           {asignaturas ? (
             asignaturas.map((asig) => (
-              <AsignaturaModal asignatura={asig.id} key={asig._id} />
+              <AsignaturaModal asignatura={asig} key={asig._id} />
             ))
           ) : (
             <h1>No hay asignaturas</h1>
@@ -201,6 +201,7 @@ export const Inscripcion = () => {
               {inscripcion.map((insc) => (
                 <tr key={insc.id}>
                   <td colSpan="2">{insc.nombre}</td>
+                  <td colSpan="2">{insc.seccion.docente}</td>
                 </tr>
               ))}
             </tbody>

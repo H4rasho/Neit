@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   activarAsignatura,
@@ -7,6 +7,8 @@ import {
 import { haceTope } from "../../helpers/haceTope";
 
 export const AsignaturaModal = ({ asignatura }) => {
+  const [seccion, setSeccion] = useState();
+
   const { inscripcion, activeAsginatura } = useSelector(
     (state) => state.inscripcion
   );
@@ -17,8 +19,19 @@ export const AsignaturaModal = ({ asignatura }) => {
   };
 
   const inscribirAsignatura = () => {
-    if (!haceTope(activeAsginatura, inscripcion))
-      dispatch(inscribirAsignautra(activeAsginatura));
+    const newIncripcion = {
+      id: activeAsginatura.id.id,
+      nombre: activeAsginatura.id.nombre,
+      seccion,
+    };
+
+    console.log(newIncripcion);
+    // if (!haceTope(activeAsginatura, inscripcion))
+    dispatch(inscribirAsignautra(newIncripcion));
+  };
+
+  const handleClick = (sec) => {
+    setSeccion(sec);
   };
 
   return (
@@ -30,7 +43,7 @@ export const AsignaturaModal = ({ asignatura }) => {
         data-bs-target="#exampleModal"
         onClick={() => handleActiveAsginatura(asignatura)}
       >
-        {asignatura.nombre}
+        {asignatura.id.nombre}
       </button>
 
       <div
@@ -53,7 +66,39 @@ export const AsignaturaModal = ({ asignatura }) => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">...</div>
+            <div className="modal-body">
+              {activeAsginatura ? (
+                activeAsginatura.secciones.map((sec) => (
+                  <div className="form-check" key={sec._id}>
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                      onClick={() => handleClick(sec)}
+                    ></input>
+                    <label className="form-check-label">
+                      Sección
+                      <div className="card">
+                        <ul className="list-group list-group-flush">
+                          <li className="list-group-item">
+                            Profesor: {sec.docente}
+                          </li>
+                          <li className="list-group-item">Horario: </li>
+                          {sec.horarios.map((h) => (
+                            <span
+                              key={h._id}
+                            >{`${h.dia} ${h.horaInicio} - ${h.horaFin}`}</span>
+                          ))}
+                        </ul>
+                      </div>
+                    </label>
+                  </div>
+                ))
+              ) : (
+                <h1>d</h1>
+              )}
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
