@@ -54,7 +54,7 @@ export const AsignaturaModal = ({ asignatura }) => {
               >
                 Cerrar
               </button>
-              <button type="button" className="btn btn-primary">
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal">
                 Inscribir asignatura
               </button>
             </div>
