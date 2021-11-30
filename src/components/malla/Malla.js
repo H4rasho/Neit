@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Horario = () => {
+export const Malla = () => {
   return (
     <div>
       <h2>No disponible</h2>
