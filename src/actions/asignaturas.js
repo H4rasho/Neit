@@ -5,7 +5,7 @@ import { types } from "../types/types";
 export const startGetAsignaturas = (idEstudiante, idCarrera) => {
   return async (dispatch) => {
     const resp = await fetchConToken(
-      `asignaturas?idEstudiante=${idEstudiante}&idCarrera=${idCarrera}`
+      `private/asignaturas?idEstudiante=${idEstudiante}&idCarrera=${idCarrera}`
     );
     const body = await resp.json();
 
@@ -39,7 +39,11 @@ export const realizarIncripcion = async (inscripcion, estudiante) => {
     asignaturas: inscripcion,
   };
 
-  const resp = await fetchConToken("inscripcion", newIncripcion, "POST");
+  const resp = await fetchConToken(
+    "private/inscripcion",
+    newIncripcion,
+    "POST"
+  );
   const body = await resp.json();
 
   if (body.ok) {
@@ -51,7 +55,7 @@ export const realizarIncripcion = async (inscripcion, estudiante) => {
 
 export const startGetIncripcion = (idEstudiante) => {
   return async (dispatch) => {
-    const resp = await fetchConToken(`inscripcion/${idEstudiante}`);
+    const resp = await fetchConToken(`private/inscripcion/${idEstudiante}`);
     const body = await resp.json();
 
     if (body.ok) {
