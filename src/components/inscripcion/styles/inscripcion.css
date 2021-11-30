@@ -64,6 +64,7 @@
 .asignatura:hover
 {
   background-color: #117456;
+  transition: .9s;
 }
 
 .incripcion__div {
