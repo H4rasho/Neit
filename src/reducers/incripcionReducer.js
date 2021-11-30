@@ -4,7 +4,7 @@ const initialState = {
   asignaturas: [],
   inscripcion: [],
   activeAsginatura: null,
-  habilitado: false,
+  habilitado: true,
 };
 
 export const incripcionReducer = (state = initialState, action) => {

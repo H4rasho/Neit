@@ -56,7 +56,7 @@ export const startGetIncripcion = (idEstudiante) => {
 
     if (body.ok) {
       if (!body.habilitado) {
-        dispatch(obetenerIncripcion(body.inscripcion));
+        dispatch(obetenerIncripcion());
       }
     }
   };
