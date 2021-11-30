@@ -22,7 +22,13 @@ export const AsignaturaModal = ({ asignatura }) => {
   const inscribirAsignatura = () => {
     if (!seccion)
     {
-      return Swal.fire('Seccion','No seleccionada','warning');
+      return Swal.fire({
+        title: 'Seccion',
+        text: 'No has escogido la seccion',
+        icon: 'question',
+        showConfirmButton: false,
+        timer: 2000
+      });
     }
     const newIncripcion = {
       id: activeAsginatura.id.id,
@@ -33,7 +39,14 @@ export const AsignaturaModal = ({ asignatura }) => {
     if (!haceTope(seccion, inscripcion))
       dispatch(inscribirAsignautra(newIncripcion));
     else {
-      Swal.fire("La asignatura", "tiene Topde de horario", "error");
+      Swal.fire({
+        title: 'Tope de horario',
+        text: 'Existe tope de horario',
+        icon: 'warning',
+        footer: 'revisa las asignaturas',
+        showConfirmButton: false,
+        timer: 2000
+      });
     }
   };
 

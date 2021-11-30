@@ -19,6 +19,7 @@
 .columna1 {
   border: rgb(49, 49, 49);
   font-size: 1.1vw;
+  height: 70vh;
 }
 
 .marco1 {
@@ -64,6 +65,7 @@
 .asignatura:hover
 {
   background-color: #117456;
+  transition: .9s;
 }
 
 .incripcion__div {
