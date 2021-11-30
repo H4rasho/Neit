@@ -15,6 +15,7 @@ export const incripcionReducer = (state = initialState, action) => {
         asignaturas: action.payload,
       };
     case types.inscribirAsignaturas:
+
       return {
         ...state,
         inscripcion: [...state.inscripcion, action.payload],
@@ -34,8 +35,10 @@ export const incripcionReducer = (state = initialState, action) => {
         inscripcion: action.payload,
         habilitado: false,
       };
-
+    case types.authLogout:
+      return initialState;
     default:
+    
       return state;
   }
 };
