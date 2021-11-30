@@ -4,6 +4,7 @@ const initialState = {
   asignaturas: [],
   inscripcion: [],
   activeAsginatura: null,
+  habilitado: false,
 };
 
 export const incripcionReducer = (state = initialState, action) => {
@@ -25,6 +26,13 @@ export const incripcionReducer = (state = initialState, action) => {
       return {
         ...state,
         activeAsginatura: action.payload,
+      };
+
+    case types.inscripcionObetenrIncripcion:
+      return {
+        ...state,
+        inscripcion: action.payload,
+        habilitado: false,
       };
 
     default:

@@ -1,12 +1,33 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  realizarIncripcion,
+  startGetIncripcion,
+} from "../../actions/asignaturas";
+
 import { AsignaturaModal } from "./AsignaturaModal";
 import "./styles/inscripcion.css";
 
-export const Inscripcion = () => {
-  const { asignaturas, inscripcion } = useSelector(
+export const Inscripcion = ({ history }) => {
+  const { asignaturas, inscripcion, habilitado } = useSelector(
     (state) => state.inscripcion
   );
+
+  const { uid } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(startGetIncripcion(uid));
+  }, [dispatch, uid]);
+
+  const handleIncripcion = async () => {
+    await realizarIncripcion(inscripcion, uid);
+    history.replace("/");
+  };
+
+  if (!habilitado) {
+    return <h1>Usted ya ha realizado una inscripcion</h1>;
+  }
 
   return (
     <div>
@@ -173,10 +194,14 @@ export const Inscripcion = () => {
           </div>
           <div className="border-bottom marco2">Limite de ramos:</div>
           {inscripcion.map((inscr) => (
-            <h3 key={inscr.id}>{inscr.nombre}</h3>
+            <div key={inscr.id} className="incripcion__div">
+              <h5>{inscr.nombre}</h5>
+            </div>
           ))}
         </div>
+        <button onClick={handleIncripcion}>Realizar Inscripcion</button>
       </div>
+
       <div className="row m-1">
         <div className="col-2"></div>
         <div className="table-responsive col-8 columna2">

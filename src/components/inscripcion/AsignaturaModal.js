@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import {
   activarAsignatura,
   inscribirAsignautra,
@@ -25,9 +26,11 @@ export const AsignaturaModal = ({ asignatura }) => {
       seccion,
     };
 
-    console.log(newIncripcion);
-    // if (!haceTope(activeAsginatura, inscripcion))
-    dispatch(inscribirAsignautra(newIncripcion));
+    if (!haceTope(seccion, inscripcion))
+      dispatch(inscribirAsignautra(newIncripcion));
+    else {
+      Swal.fire("La asignatura", "tiene Topde de horario", "error");
+    }
   };
 
   const handleClick = (sec) => {

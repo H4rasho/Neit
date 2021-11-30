@@ -59,3 +59,16 @@
 .asignatura {
   width: 100%;
 }
+
+.incripcion__div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #1115;
+}
+
+.incripcion__icon {
+  margin: auto;
+  color: #99240f;
+  cursor: pointer;
+}

@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { fetchConToken } from "../helpers/fetch";
 import { types } from "../types/types";
 
@@ -29,4 +30,39 @@ const getAsignaturas = (asginatruas) => ({
 export const inscribirAsignautra = (asignatura) => ({
   type: types.inscribirAsignaturas,
   payload: asignatura,
+});
+
+export const realizarIncripcion = async (inscripcion, estudiante) => {
+  const newIncripcion = {
+    estudiante,
+    fecha: Date.now(),
+    asignaturas: inscripcion,
+  };
+
+  const resp = await fetchConToken("inscripcion", newIncripcion, "POST");
+  const body = await resp.json();
+
+  if (body.ok) {
+    Swal.fire("Incripcion", "realizada con éxito", "success");
+  } else {
+    console.log(body.msg);
+  }
+};
+
+export const startGetIncripcion = (idEstudiante) => {
+  return async (dispatch) => {
+    const resp = await fetchConToken(`inscripcion/${idEstudiante}`);
+    const body = await resp.json();
+
+    if (body.ok) {
+      if (!body.habilitado) {
+        dispatch(obetenerIncripcion(body.inscripcion));
+      }
+    }
+  };
+};
+
+const obetenerIncripcion = (inscripcion) => ({
+  type: types.inscripcionObetenrIncripcion,
+  payload: inscripcion,
 });
