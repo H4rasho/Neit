@@ -20,6 +20,10 @@ export const AsignaturaModal = ({ asignatura }) => {
   };
 
   const inscribirAsignatura = () => {
+    if (!seccion)
+    {
+      return Swal.fire('Seccion','No seleccionada','warning');
+    }
     const newIncripcion = {
       id: activeAsginatura.id.id,
       nombre: activeAsginatura.id.nombre,
@@ -41,7 +45,7 @@ export const AsignaturaModal = ({ asignatura }) => {
     <>
       <button
         type="button"
-        className="btn btn-primary m-1 asignatura"
+        className="btn btn-success m-1 asignatura"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
         onClick={() => handleActiveAsginatura(asignatura)}

@@ -24,7 +24,14 @@ export const Inscripcion = ({ history }) => {
     await realizarIncripcion(inscripcion, uid);
     history.replace("/");
   };
+const unirHorarios=(horarios)=>{ 
+  let templateHorario = '';
+  horarios.forEach(h => {
+    templateHorario+=`${h.dia} ${h.horaInicio} - ${h.horaFin} - `;
+  });
 
+  return templateHorario;
+}
   if (!habilitado) {
     return <h1>Usted ya ha realizado una inscripcion</h1>;
   }
@@ -199,7 +206,12 @@ export const Inscripcion = ({ history }) => {
             </div>
           ))}
         </div>
-        <button onClick={handleIncripcion}>Realizar Inscripcion</button>
+        <div className="row">
+            <div className="col-2"></div>
+            <div className="col-8"></div>
+            <div className="col-2"><button className="btn btn-success btnInscripcion" onClick={handleIncripcion}>Realizar Inscripcion</button></div>
+        </div>
+        
       </div>
 
       <div className="row m-1">
@@ -215,10 +227,7 @@ export const Inscripcion = ({ history }) => {
                   Profesor
                 </th>
                 <th scope="col" colSpan="2">
-                  Sección
-                </th>
-                <th scope="col" colSpan="2">
-                  Bloque
+                  Horario
                 </th>
               </tr>
             </thead>
@@ -226,7 +235,10 @@ export const Inscripcion = ({ history }) => {
               {inscripcion.map((insc) => (
                 <tr key={insc.id}>
                   <td colSpan="2">{insc.nombre}</td>
-                  <td colSpan="2">{insc.seccion.docente}</td>
+                  <td colSpan="2">{insc.seccion.docente}</td>                                
+                  <td colSpan="2">{unirHorarios(insc.seccion.horarios)}</td>
+                    
+                  
                 </tr>
               ))}
             </tbody>

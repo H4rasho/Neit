@@ -58,6 +58,12 @@
 
 .asignatura {
   width: 100%;
+  background-color: #29af87;
+}
+
+.asignatura:hover
+{
+  background-color: #117456;
 }
 
 .incripcion__div {
@@ -71,4 +77,12 @@
   margin: auto;
   color: #99240f;
   cursor: pointer;
+}
+
+.btnInscripcion
+{
+  margin-left: 22px;
+  margin-top: 5px;
+  font-size: 1.1vw;
+  width: 100%;
 }
