@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { HashRouter as Router, Switch } from "react-router-dom";
 import { startChecking } from "../actions/auth";
 import { Login } from "../components/auth/Login";
 
