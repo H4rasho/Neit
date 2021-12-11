@@ -66,6 +66,11 @@ export const startGetIncripcion = (idEstudiante) => {
   };
 };
 
+export const eliminarAsignatura = (asignatura) => ({
+  type: types.inscripcionEliminarAsingatura,
+  payload: asignatura,
+});
+
 const obetenerIncripcion = (inscripcion) => ({
   type: types.inscripcionObetenrIncripcion,
   payload: inscripcion,

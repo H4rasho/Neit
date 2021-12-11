@@ -4,6 +4,7 @@ const initialState = {
   asignaturas: [],
   inscripcion: [],
   activeAsginatura: null,
+  asignaturasDB: [],
   habilitado: true,
 };
 
@@ -13,9 +14,9 @@ export const incripcionReducer = (state = initialState, action) => {
       return {
         ...state,
         asignaturas: action.payload,
+        asignaturasDB: action.payload,
       };
     case types.inscribirAsignaturas:
-
       return {
         ...state,
         inscripcion: [...state.inscripcion, action.payload],
@@ -37,8 +38,17 @@ export const incripcionReducer = (state = initialState, action) => {
       };
     case types.authLogout:
       return initialState;
+
+    case types.inscripcionEliminarAsingatura:
+      return {
+        ...state,
+        inscripcion: state.inscripcion.filter(
+          (inscr) => inscr.id !== action.payload.id.id
+        ),
+        asignaturas: [...state.asignaturas, action.payload],
+      };
+
     default:
-    
       return state;
   }
 };
