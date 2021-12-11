@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  eliminarAsignatura,
   realizarIncripcion,
   startGetIncripcion,
 } from "../../actions/asignaturas";
@@ -14,6 +15,7 @@ export const Inscripcion = ({ history }) => {
   );
 
   const { uid } = useSelector((state) => state.auth);
+  const { asignaturasDB } = useSelector((state) => state.inscripcion);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,14 +26,21 @@ export const Inscripcion = ({ history }) => {
     await realizarIncripcion(inscripcion, uid);
     history.replace("/");
   };
-const unirHorarios=(horarios)=>{ 
-  let templateHorario = '';
-  horarios.forEach(h => {
-    templateHorario+=`${h.dia} ${h.horaInicio} - ${h.horaFin} - `;
-  });
 
-  return templateHorario;
-}
+  const handleEliminar = (asgiEliminar) => {
+    console.log(asgiEliminar);
+    const asig = asignaturasDB.find((a) => a.id.id === asgiEliminar.id);
+    dispatch(eliminarAsignatura(asig));
+  };
+
+  const unirHorarios = (horarios) => {
+    let templateHorario = "";
+    horarios.forEach((h) => {
+      templateHorario += `${h.dia} ${h.horaInicio} - ${h.horaFin} - `;
+    });
+
+    return templateHorario;
+  };
   if (!habilitado) {
     return <h1>Usted ya ha realizado una inscripcion</h1>;
   }
@@ -71,10 +80,8 @@ const unirHorarios=(horarios)=>{
               {inscripcion.map((insc) => (
                 <tr key={insc.id}>
                   <td colSpan="2">{insc.nombre}</td>
-                  <td colSpan="2">{insc.seccion.docente}</td>                                
+                  <td colSpan="2">{insc.seccion.docente}</td>
                   <td colSpan="2">{unirHorarios(insc.seccion.horarios)}</td>
-                    
-                  
                 </tr>
               ))}
             </tbody>
@@ -89,18 +96,28 @@ const unirHorarios=(horarios)=>{
           {inscripcion.map((inscr) => (
             <div key={inscr.id} className="incripcion__div">
               <h5>{inscr.nombre}</h5>
+              <button
+                className="btn btn-danger"
+                onClick={() => handleEliminar(inscr)}
+              >
+                Eliminar
+              </button>
             </div>
           ))}
         </div>
         <div className="row">
-            <div className="col-2"></div>
-            <div className="col-8"></div>
-            <div className="col-2"><button className="btn btn-success btnInscripcion" onClick={handleIncripcion}>Realizar Inscripcion</button></div>
+          <div className="col-2"></div>
+          <div className="col-8"></div>
+          <div className="col-2">
+            <button
+              className="btn btn-success btnInscripcion"
+              onClick={handleIncripcion}
+            >
+              Realizar Inscripcion
+            </button>
+          </div>
         </div>
-        
       </div>
-
-      
     </div>
   );
 };
