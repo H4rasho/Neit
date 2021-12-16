@@ -9,13 +9,13 @@ import { Malla } from "../components/malla/Malla";
 import { Navbar } from "../components/ui/Navbar";
 
 export const InscriptionRoutes = () => {
-  const { uid, carrera } = useSelector((state) => state.auth);
+  const { uid, carrera, facultad } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(startGetAsignaturas(uid, carrera));
-  }, [dispatch, uid, carrera]);
+    dispatch(startGetAsignaturas(uid, carrera, facultad));
+  }, [dispatch, uid, carrera, facultad]);
 
   return (
     <div>

@@ -2,10 +2,10 @@ import Swal from "sweetalert2";
 import { fetchConToken } from "../helpers/fetch";
 import { types } from "../types/types";
 
-export const startGetAsignaturas = (idEstudiante, idCarrera) => {
+export const startGetAsignaturas = (idEstudiante, idCarrera, idFacultad) => {
   return async (dispatch) => {
     const resp = await fetchConToken(
-      `private/asignaturas?idEstudiante=${idEstudiante}&idCarrera=${idCarrera}`
+      `private/asignaturas?idEstudiante=${idEstudiante}&idCarrera=${idCarrera}&idFacultad=${idFacultad}`
     );
     const body = await resp.json();
 
@@ -74,4 +74,9 @@ export const eliminarAsignatura = (asignatura) => ({
 const obetenerIncripcion = (inscripcion) => ({
   type: types.inscripcionObetenrIncripcion,
   payload: inscripcion,
+});
+
+export const agregarAlHorario = (horario) => ({
+  type: types.incripcionHorario,
+  payload: horario,
 });

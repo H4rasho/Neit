@@ -6,6 +6,7 @@ const initialState = {
   activeAsginatura: null,
   asignaturasDB: [],
   habilitado: true,
+  horario: [],
 };
 
 export const incripcionReducer = (state = initialState, action) => {
@@ -46,6 +47,12 @@ export const incripcionReducer = (state = initialState, action) => {
           (inscr) => inscr.id !== action.payload.id.id
         ),
         asignaturas: [...state.asignaturas, action.payload],
+      };
+
+    case types.incripcionHorario:
+      return {
+        ...state,
+        horario: [...state.horario, ...action.payload],
       };
 
     default:

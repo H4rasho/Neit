@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import moment from "moment";
+import "moment/locale/es";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import {
   activarAsignatura,
+  agregarAlHorario,
   inscribirAsignautra,
 } from "../../actions/asignaturas";
 import { haceTope } from "../../helpers/haceTope";
+import { nuevosHorariosCaledario } from "../../helpers/horario";
+
+moment.locale("es");
 
 export const AsignaturaModal = ({ asignatura }) => {
   const [seccion, setSeccion] = useState();
@@ -20,14 +26,13 @@ export const AsignaturaModal = ({ asignatura }) => {
   };
 
   const inscribirAsignatura = () => {
-    if (!seccion)
-    {
+    if (!seccion) {
       return Swal.fire({
-        title: 'Seccion',
-        text: 'No has escogido la seccion',
-        icon: 'question',
+        title: "Seccion",
+        text: "No has escogido la seccion",
+        icon: "question",
         showConfirmButton: false,
-        timer: 2000
+        timer: 2000,
       });
     }
     const newIncripcion = {
@@ -36,16 +41,23 @@ export const AsignaturaModal = ({ asignatura }) => {
       seccion,
     };
 
-    if (!haceTope(seccion, inscripcion))
+    if (!haceTope(seccion, inscripcion)) {
       dispatch(inscribirAsignautra(newIncripcion));
-    else {
+      console.log(seccion);
+      const data = nuevosHorariosCaledario(
+        seccion.horarios,
+        activeAsginatura.id.nombre
+      );
+      console.log(data);
+      dispatch(agregarAlHorario(data));
+    } else {
       Swal.fire({
-        title: 'Tope de horario',
-        text: 'Existe tope de horario',
-        icon: 'warning',
-        footer: 'revisa las asignaturas',
+        title: "Tope de horario",
+        text: "Existe tope de horario",
+        icon: "warning",
+        footer: "revisa las asignaturas",
         showConfirmButton: false,
-        timer: 2000
+        timer: 2000,
       });
     }
   };
