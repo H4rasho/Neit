@@ -5,6 +5,7 @@ import {
   realizarIncripcion,
   startGetIncripcion,
 } from "../../actions/asignaturas";
+import { Horario } from "../horario/Horario";
 
 import { AsignaturaModal } from "./AsignaturaModal";
 import "./styles/inscripcion.css";
@@ -61,6 +62,8 @@ export const Inscripcion = ({ history }) => {
             <h1>No hay asignaturas</h1>
           )}
         </div>
+        <Horario />
+
         <div className="table-responsive col-8 columna2">
           <table className="table table-bordered table-striped border-light text-center Tseccion">
             <thead>
@@ -87,7 +90,6 @@ export const Inscripcion = ({ history }) => {
             </tbody>
           </table>
         </div>
-
         <div className="border border-3 border-dark col-2 bg-light columna3">
           <div className="border-bottom border-3 border-dark text-center marco3">
             Asignaturas seleccionadas

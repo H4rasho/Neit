@@ -12,4 +12,5 @@ export const types = {
   inscribirAsignaturas: "[Incripcion} inscribir asignatura",
   inscripcionEliminarAsingatura: "[Incripcion] eliminar de la inscripcion",
   inscripcionObetenrIncripcion: "[Incripcion] obtener inscripcion",
+  incripcionHorario: "[Incripcion] añadir horario",
 };

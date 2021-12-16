@@ -15,7 +15,6 @@ export const Login = ({ history }) => {
 
   const { email, password } = values;
   const handleSubmit = (e) => {
-    console.log(email);
     e.preventDefault();
     dispatch(startlogin(email, password));
     history.replace("/");

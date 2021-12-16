@@ -4,51 +4,41 @@ import moment from "moment";
 import "moment/locale/es";
 
 import "./styles/Horario.css";
-import { useState } from "react";
+import { useSelector } from "react-redux";
 
 moment.locale("es");
 
 const localizer = momentLocalizer(moment);
-const myEventsList = [];
-
-// const newFehca = {
-//   title: "Introduccion a la ingeniería",
-//   start: moment("01 03 2021 15:00:00", "DD MM YYYY hh:mm:ss"),
-//   end: moment("01 03 2021 16:00:00", "DD MM YYYY hh:mm:ss"),
-// };
 
 let formats = {
-  dayFormat: "dddd",
+  dayFormat: (date, __, localizer) => localizer.format(date, "dddd"),
 };
 
 export const Horario = () => {
-  const [lastView, setLastView] = useState(
-    localStorage.getItem("lastView") || "week"
-  );
+  const { horario } = useSelector((state) => state.inscripcion);
 
-  const onViewChange = (e) => {
-    setLastView(e);
-    localStorage.setItem("lastView", e);
-  };
-
-  const fechaInicio = moment("01 03 2021 08:00:00", "DD MM YYYY hh:mm:ss");
-  const fechaTermino = moment("01 03 2021 23:00:00", "DD MM YYYY hh:mm:ss");
+  const fechaInicio = moment(
+    "01 03 2021 08:00:00",
+    "DD MM YYYY hh:mm:ss"
+  ).toDate();
+  const fechaTermino = moment(
+    "01 03 2021 23:00:00",
+    "DD MM YYYY hh:mm:ss"
+  ).toDate();
 
   return (
     <div className="clendarContainer">
       <Calendar
         localizer={localizer}
-        events={myEventsList}
+        events={horario}
         startAccessor="start"
         min={fechaInicio}
         max={fechaTermino}
-        onView={onViewChange}
         endAccessor="end"
-        style={{ height: 700 }}
+        style={{ height: 600, width: 1000 }}
         defaultView="week"
         toolbar={false}
-        view={lastView}
-        date={fechaInicio}
+        defaultDate={fechaInicio}
         formats={formats}
       />
     </div>
