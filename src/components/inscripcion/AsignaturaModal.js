@@ -43,12 +43,10 @@ export const AsignaturaModal = ({ asignatura }) => {
 
     if (!haceTope(seccion, inscripcion)) {
       dispatch(inscribirAsignautra(newIncripcion));
-      console.log(seccion);
       const data = nuevosHorariosCaledario(
         seccion.horarios,
         activeAsginatura.id.nombre
       );
-      console.log(data);
       dispatch(agregarAlHorario(data));
     } else {
       Swal.fire({

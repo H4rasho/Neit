@@ -47,6 +47,9 @@ export const incripcionReducer = (state = initialState, action) => {
           (inscr) => inscr.id !== action.payload.id.id
         ),
         asignaturas: [...state.asignaturas, action.payload],
+        horario: state.horario.filter(
+          (h) => h.title !== action.payload.id.nombre
+        ),
       };
 
     case types.incripcionHorario:
