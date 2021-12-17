@@ -62,10 +62,11 @@ export const Inscripcion = ({ history }) => {
             <h1>No hay asignaturas</h1>
           )}
         </div>
+        
+        <div className="col-8">
         <Horario />
-
-        <div className="table-responsive col-8 columna2">
           <table className="table table-bordered table-striped border-light text-center Tseccion">
+            
             <thead>
               <tr>
                 <th scope="row" colSpan="2">
@@ -90,7 +91,7 @@ export const Inscripcion = ({ history }) => {
             </tbody>
           </table>
         </div>
-        <div className="border border-3 border-dark col-2 bg-light columna3">
+        <div className="col-2 border border-3 border-dark bg-light columna3">
           <div className="border-bottom border-3 border-dark text-center marco3">
             Asignaturas seleccionadas
           </div>
@@ -110,7 +111,7 @@ export const Inscripcion = ({ history }) => {
         <div className="row">
           <div className="col-2"></div>
           <div className="col-8"></div>
-          <div className="col-2">
+          <div className="col-2 subirBtn">
             <button
               className="btn btn-success btnInscripcion"
               onClick={handleIncripcion}

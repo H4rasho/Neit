@@ -27,20 +27,24 @@ export const Horario = () => {
   ).toDate();
 
   return (
-    <div className="clendarContainer">
-      <Calendar
-        localizer={localizer}
-        events={horario}
-        startAccessor="start"
-        min={fechaInicio}
-        max={fechaTermino}
-        endAccessor="end"
-        style={{ height: 600, width: 1000 }}
-        defaultView="week"
-        toolbar={false}
-        defaultDate={fechaInicio}
-        formats={formats}
-      />
+    <div>
+      <div className="col-2"></div>
+      <div className="col-8 clendarContainer">
+          <Calendar
+            localizer={localizer}
+            events={horario}
+            startAccessor="start"
+            min={fechaInicio}
+            max={fechaTermino}
+            endAccessor="end"
+            style={{ height: 600, width: 800 }}
+            defaultView="week"
+            toolbar={false}
+            defaultDate={fechaInicio}
+            formats={formats}
+          />
+      </div>
+      <div className="col-2"></div>
     </div>
   );
 };
