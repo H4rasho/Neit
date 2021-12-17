@@ -28,8 +28,7 @@ export const Horario = () => {
 
   return (
     <div>
-      <div className="col-2"></div>
-      <div className="col-8 clendarContainer">
+      <div className="clendarContainer">
           <Calendar
             localizer={localizer}
             events={horario}
@@ -44,7 +43,6 @@ export const Horario = () => {
             formats={formats}
           />
       </div>
-      <div className="col-2"></div>
     </div>
   );
 };

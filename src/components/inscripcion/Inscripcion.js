@@ -9,6 +9,7 @@ import { Horario } from "../horario/Horario";
 
 import { AsignaturaModal } from "./AsignaturaModal";
 import "./styles/inscripcion.css";
+import Swal from "sweetalert2";
 
 export const Inscripcion = ({ history }) => {
   const { asignaturas, inscripcion, habilitado } = useSelector(
@@ -32,6 +33,14 @@ export const Inscripcion = ({ history }) => {
     console.log(asgiEliminar);
     const asig = asignaturasDB.find((a) => a.id.id === asgiEliminar.id);
     dispatch(eliminarAsignatura(asig));
+    Swal.fire({
+      title: "Asignatura eliminada",
+      text: "Has eliminado la asignatura de la lista",
+      icon: "success",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+
   };
 
   const unirHorarios = (horarios) => {
@@ -64,33 +73,33 @@ export const Inscripcion = ({ history }) => {
         </div>
         
         <div className="col-8">
-        <Horario />
-          <table className="table table-bordered table-striped border-light text-center Tseccion">
-            
-            <thead>
-              <tr>
-                <th scope="row" colSpan="2">
-                  Asignatura
-                </th>
-                <th scope="col" colSpan="2">
-                  Profesor
-                </th>
-                <th scope="col" colSpan="2">
-                  Horario
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {inscripcion.map((insc) => (
-                <tr key={insc.id}>
-                  <td colSpan="2">{insc.nombre}</td>
-                  <td colSpan="2">{insc.seccion.docente}</td>
-                  <td colSpan="2">{unirHorarios(insc.seccion.horarios)}</td>
+          <Horario />
+            <table className="table table-bordered table-striped border-light text-center Tseccion">            
+              <thead>
+                <tr>
+                  <th scope="row" colSpan="2">
+                    Asignatura
+                  </th>
+                  <th scope="col" colSpan="2">
+                    Profesor
+                  </th>
+                  <th scope="col" colSpan="2">
+                    Horario
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {inscripcion.map((insc) => (
+                  <tr key={insc.id}>
+                    <td colSpan="2">{insc.nombre}</td>
+                    <td colSpan="2">{insc.seccion.docente}</td>
+                    <td colSpan="2">{unirHorarios(insc.seccion.horarios)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
         </div>
+
         <div className="col-2 border border-3 border-dark bg-light columna3">
           <div className="border-bottom border-3 border-dark text-center marco3">
             Asignaturas seleccionadas
@@ -106,12 +115,14 @@ export const Inscripcion = ({ history }) => {
                 Eliminar
               </button>
             </div>
-          ))}
+          ))}         
         </div>
+        
+
         <div className="row">
           <div className="col-2"></div>
           <div className="col-8"></div>
-          <div className="col-2 subirBtn">
+          <div className="col-2">
             <button
               className="btn btn-success btnInscripcion"
               onClick={handleIncripcion}
