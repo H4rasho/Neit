@@ -1,4 +1,12 @@
-.legend
-{
-    margin-left: -20px;
+.legend {
+  margin-left: -20px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-element {
+  margin-right: 50px;
 }

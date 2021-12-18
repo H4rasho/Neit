@@ -8,6 +8,8 @@ export const types = {
   login: "[Auth] Login",
 
   inscripcionGetAsginaturas: "[Incripcion] obtener asignaturas ",
+  inscripcionStartChecking: "[Incripcion] start checking ",
+  inscripcionObetenerMalla: "[Incripcion] obtener malla ",
   incripcionActiva: "[Incripcion] activa",
   inscribirAsignaturas: "[Incripcion} inscribir asignatura",
   inscripcionEliminarAsingatura: "[Incripcion] eliminar de la inscripcion",

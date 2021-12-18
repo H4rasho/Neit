@@ -6,6 +6,7 @@ const initialState = {
   activeAsginatura: null,
   asignaturasDB: [],
   habilitado: true,
+  checking: true,
   horario: [],
 };
 
@@ -56,6 +57,17 @@ export const incripcionReducer = (state = initialState, action) => {
       return {
         ...state,
         horario: [...state.horario, ...action.payload],
+      };
+
+    case types.inscripcionObetenerMalla:
+      return {
+        ...state,
+        malla: action.payload,
+        checking: false,
+      };
+    case types.inscripcionStartChecking:
+      return {
+        checking: true,
       };
 
     default:
