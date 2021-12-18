@@ -80,3 +80,25 @@ export const agregarAlHorario = (horario) => ({
   type: types.incripcionHorario,
   payload: horario,
 });
+
+export const startObtenerMalla = (idEstudiante) => {
+  return async (dispatch) => {
+    const resp = await fetchConToken(`private/avanceMalla/${idEstudiante}`);
+    const body = await resp.json();
+
+    if (body.ok) {
+      dispatch(obetenerMalla(body.malla));
+    } else {
+      console.log(body.msg);
+    }
+  };
+};
+
+const obetenerMalla = (malla) => ({
+  type: types.inscripcionObetenerMalla,
+  payload: malla,
+});
+
+export const startChecking = () => ({
+  type: types.inscripcionStartChecking,
+});
