@@ -53,6 +53,8 @@
 .asignatura {
   width: 100%;
   background-color: #29af87;
+  display: flexbox;
+  font-size: 1.1vw;
 }
 
 .asignatura:hover
@@ -78,8 +80,11 @@
 {
   margin-left: 22px;
   margin-top: -340px;
+  background-color: #29af87;
   font-size: 1.1vw;
   width: 100%;
+  transition: .9s;
+  display: flexbox;
 }
 
 
