@@ -33,7 +33,7 @@ export const Malla = () => {
               </tbody>
             </table>
           </div>
-          <div className="m-1 border border-2 border-dark">
+          <div className="m-1 ">
             <Semestres />
           </div>
         </div>

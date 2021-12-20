@@ -54,6 +54,21 @@ export const Login = ({ history }) => {
                 ></input>
               </div>
 
+              <br></br>
+              <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked></input>
+              <label class="form-check-label" for="flexRadioDefault1">
+              &nbsp;Estudiante
+              </label>
+              </div>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" ></input>
+                <label class="form-check-label" for="flexRadioDefault2">
+                &nbsp;Administrador
+                </label>
+              </div>
+              
+
               <button type="submit" className="btn btn-success mt-4">
                 <i className="fas fa-sign-in-alt"></i> Ingresar{" "}
               </button>
