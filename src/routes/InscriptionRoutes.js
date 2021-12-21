@@ -6,6 +6,7 @@ import { Home } from "../components/home/Home";
 import { Horario } from "../components/horario/Horario";
 import { Inscripcion } from "../components/inscripcion/Inscripcion";
 import { Malla } from "../components/malla/Malla";
+import { Oferta } from "../components/ofertaAc/Oferta";
 import { Navbar } from "../components/ui/Navbar";
 
 export const InscriptionRoutes = () => {
@@ -25,6 +26,7 @@ export const InscriptionRoutes = () => {
         <Route exact path="/Inscripcion" component={Inscripcion} />
         <Route exact path="/Horario" component={Horario} />
         <Route exact path="/Malla" component={Malla} />
+        <Route exact path="/Oferta" component={Oferta} />
         <Redirect to="/" />
       </Switch>
     </div>
