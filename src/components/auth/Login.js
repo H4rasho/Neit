@@ -90,7 +90,7 @@ export const Login = ({ history }) => {
                 <label className="form-check-label" htmlFor="flexRadioDefault2">
                   &nbsp;Administrador
                 </label>
-              </div>
+               </div>
 
               <button type="submit" className="btn btn-success mt-4">
                 <i className="fas fa-sign-in-alt"></i> Ingresar{" "}
