@@ -11,12 +11,21 @@ export const Login = ({ history }) => {
   const [values, handleImputChange] = useForm({
     email: "",
     password: "",
+    userTypeForm: "",
   });
 
-  const { email, password } = values;
+  const { email, password, userTypeForm } = values;
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(startlogin(email, password));
+    let userType;
+
+    if (userTypeForm === "admin") {
+      userType = userTypeForm;
+    } else {
+      userType = "estudiante";
+    }
+
+    dispatch(startlogin(email, password, userType));
     history.replace("/");
   };
 
@@ -55,19 +64,33 @@ export const Login = ({ history }) => {
               </div>
 
               <br></br>
-              <div class="form-check-inline">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked></input>
-              <label class="form-check-label" for="flexRadioDefault1">
-              &nbsp;Estudiante
-              </label>
-              </div>
-              <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" ></input>
-                <label class="form-check-label" for="flexRadioDefault2">
-                &nbsp;Administrador
+              <div className="form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="userTypeForm"
+                  id="flexRadioDefault1"
+                  value="estudiante"
+                  onChange={handleImputChange}
+                  checked
+                ></input>
+                <label className="form-check-label" htmlFor="flexRadioDefault1">
+                  &nbsp;Estudiante
                 </label>
               </div>
-              
+              <div className="form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="userTypeForm"
+                  id="flexRadioDefault2"
+                  value="admin"
+                  onChange={handleImputChange}
+                ></input>
+                <label className="form-check-label" htmlFor="flexRadioDefault2">
+                  &nbsp;Administrador
+                </label>
+              </div>
 
               <button type="submit" className="btn btn-success mt-4">
                 <i className="fas fa-sign-in-alt"></i> Ingresar{" "}
