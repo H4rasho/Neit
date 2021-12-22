@@ -21,10 +21,10 @@ export const InscriptionRoutes = () => {
     <div>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/Inscripcion" component={Inscripcion} />
-        <Route exact path="/Horario" component={Horario} />
-        <Route exact path="/Malla" component={Malla} />
+        <Route exact path="/estudiante" component={Home} />
+        <Route exact path="/estudiante/Inscripcion" component={Inscripcion} />
+        <Route exact path="/estudiante/Horario" component={Horario} />
+        <Route exact path="/estudiante/Malla" component={Malla} />
         <Redirect to="/" />
       </Switch>
     </div>

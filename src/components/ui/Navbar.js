@@ -33,31 +33,27 @@ export const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" to="/Home">
+                <Link className="nav-link active" to="/estudiante/Home">
                   Inicio
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/Inscripcion">
+                <Link className="nav-link active" to="/estudiante/Inscripcion">
                   Inscripción de ramos
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/Horario">
+                <Link className="nav-link active" to="/estudiante/Horario">
                   Mi horario
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/Malla">
+                <Link className="nav-link active" to="/estudiante/Malla">
                   Mi malla curricular
                 </Link>
               </li>
               <li className="nav-item out">
-                <Link
-                  className="nav-link active"
-                  to="/Out"
-                  onClick={handleLogout}
-                >
+                <Link className="nav-link active" to="/" onClick={handleLogout}>
                   Cerrar sesion
                 </Link>
               </li>

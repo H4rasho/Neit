@@ -26,6 +26,7 @@ export const startlogin = (email, password, userType) => {
           name: body.name,
           carrera: body.carrera,
           facultad: body.facultad,
+          userType: body.userType,
         })
       );
     } else {
@@ -54,6 +55,7 @@ export const startChecking = () => {
           name: body.name,
           carrera: body.carrera,
           facultad: body.facultad,
+          userType: body.userType,
         })
       );
     } else {
