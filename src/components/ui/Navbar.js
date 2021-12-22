@@ -14,7 +14,7 @@ export const Navbar = () => {
   return (
     <div>
       <div className="divUno">
-        <h1 className="titulo">Sistema de inscripción UTEM</h1>
+        <h1 className="titulo">Sistema de Inscripción UTEM</h1>
       </div>
 
       <nav className="navbar navbar-expand-lg navbar-dark navm">

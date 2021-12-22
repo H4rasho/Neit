@@ -3,10 +3,8 @@
   transition: 0.9s;
 }
 
-.tamano {
-  width: auto;
-}
-
 .container {
   padding: 20px;
+  width: 30%;
 }
+

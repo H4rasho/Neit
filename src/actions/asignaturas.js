@@ -47,7 +47,7 @@ export const realizarIncripcion = async (inscripcion, estudiante) => {
   const body = await resp.json();
 
   if (body.ok) {
-    Swal.fire("Incripcion", "realizada con éxito", "success");
+    Swal.fire("Inscripcion", "realizada con éxito", "success");
   } else {
     console.log(body.msg);
   }

@@ -51,7 +51,7 @@ export const AsignaturaModal = ({ asignatura }) => {
     } else {
       Swal.fire({
         title: "Tope de horario",
-        text: "Existe tope de horario",
+        text: "Existe tope de horario con "+activeAsginatura.id.nombre,
         icon: "warning",
         footer: "revisa las asignaturas",
         showConfirmButton: false,

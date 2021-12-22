@@ -67,25 +67,28 @@ export const Oferta = () => {
       </div>
 
       {/*Despliegue de lista según modo escogido*/}
-      <select
-        className="mt-2 form-select tamano"
-        defaultValue=""
-        onChange={handleChange}
-      >
-        <option value="">Lista según modo</option>
-        {modo === "facultad"
-          ? facultades.map((f) => (
-              <option value={f.nombre} key={f.id} name="section">
-                {f.nombre}
-              </option>
-            ))
-          : carreras.map((c) => (
-              <option value={c.nombre} key={c.id} name="section">
-                {c.nombre}
-              </option>
-            ))}
-      </select>
-      <Link to="/admin/asignaturas">Siguiente</Link>
+        <select
+          className="mt-2 form-select"
+          defaultValue=""
+          onChange={handleChange}
+        >
+          <option value="">Lista según modo</option>
+          {modo === "facultad"
+            ? facultades.map((f) => (
+                <option value={f.nombre} key={f.id} name="section">
+                  {f.nombre}
+                </option>
+              ))
+            : carreras.map((c) => (
+                <option value={c.nombre} key={c.id} name="section">
+                  {c.nombre}
+                </option>
+              ))}
+        </select>
+      <Link to="/admin/asignaturas">
+        <button className="mt-3 btn btn-success">Siguiente</button>
+      </Link>
+
     </div>
   );
 };

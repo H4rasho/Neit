@@ -15,7 +15,7 @@ export const NavbarAdmin = () => {
   return (
     <nav>
       <div className="divUno">
-        <h5 className="titulo">Sistema de inscripción UTEM</h5>
+        <h5 className="titulo">Sistema de Inscripción UTEM</h5>
         <h6 className="titulo">Modo Administrador</h6>
       </div>
       <div className="navAdmin">

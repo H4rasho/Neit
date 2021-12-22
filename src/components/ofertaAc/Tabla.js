@@ -3,7 +3,7 @@ import "./styles/Oferta.css";
 
 export const Tabla = () => {
   return (
-    <div className="container bg-light">
+    <div className="bg-light">
       <table className="table">
         <thead>
           <tr>

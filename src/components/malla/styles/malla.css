@@ -5,8 +5,6 @@
   margin-top: 5px;
   margin-bottom: 5px;
   
-
-
 }
 
 .flex-element {
@@ -23,9 +21,15 @@
   text-align: center;
 }
 
-.botoncss
+.botonAsignatura
 {
   width: 200px;
   margin-right: 100px;
   border-radius: 15px;
+  
+}
+
+.letra
+{
+  font-size: 2vh;
 }

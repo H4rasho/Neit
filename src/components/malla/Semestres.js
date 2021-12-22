@@ -22,7 +22,7 @@ export const Semestres = () => {
           <table width="100%">
             <tr className="flex">
               {getHeadMalla(malla.asignaturas).map((numeroSemestre) => (
-                <div key={numeroSemestre} className="flex-element ">
+                <div key={numeroSemestre} className="flex-element">
                   <h4>{numeroSemestre}</h4>
                 </div>
               ))}
@@ -35,7 +35,7 @@ export const Semestres = () => {
                     <div key={asignatura.id._id} className="m-1">
                       <button
                         type="button"
-                        className="btn btn-primary botoncss"
+                        className="btn btn-primary botonAsignatura"
                         data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop"
                       >
