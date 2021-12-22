@@ -1,5 +1,6 @@
 import React from "react";
 import { Semestres } from "./Semestres";
+import "./styles/malla.css";
 
 export const Malla = () => {
   return (
@@ -19,10 +20,7 @@ export const Malla = () => {
                   <td className="table-danger text-center" width="20%">
                     Reprobado
                   </td>
-                  <td
-                    className="table-secondary text-center"
-                    width="20%"
-                  >
+                  <td className="table-secondary text-center" width="20%">
                     No Cursado
                   </td>
                   <td className="table-warning text-center" width="20%">
@@ -35,7 +33,6 @@ export const Malla = () => {
           <div className="m-1">
             <Semestres />
           </div>
-          
         </div>
       </div>
     </div>

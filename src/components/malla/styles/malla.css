@@ -1,35 +1,32 @@
+.malla-container {
+  width: 1700px;
+}
 
 .flex {
   display: flex;
-  justify-content: space-around;
   margin-top: 5px;
   margin-bottom: 5px;
-  
 }
 
 .flex-element {
-  margin-right: 100px;
+  margin: 4px;
   border: 1px solid #29af87;
   padding: 1px;
   background-color: #29af87;
   color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Helvetica", sans-serif;
   border-radius: 50px;
-  width: 200px;
+  width: 150px;
   text-align: center;
 }
 
-.botonAsignatura
-{
-  width: 200px;
-  margin-right: 100px;
+.botonAsignatura {
+  width: 150px;
   border-radius: 15px;
-  
 }
 
-.letra
-{
+.letra {
   font-size: 2vh;
 }
