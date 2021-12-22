@@ -1,10 +1,12 @@
-.lista:hover
-{
-    background-color: rgb(190, 190, 190);
-    transition: .9s;
+.lista:hover {
+  background-color: rgb(190, 190, 190);
+  transition: 0.9s;
 }
 
-.tamano
-{
-    width: auto;
+.tamano {
+  width: auto;
+}
+
+.container {
+  padding: 20px;
 }
