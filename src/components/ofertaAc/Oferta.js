@@ -1,9 +1,29 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { startLogout } from "../../actions/auth";
 import "./styles/Oferta.css";
 
+
 export const Oferta = () => {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(startLogout());
+  };
   return (
     <div>
+      <nav>
+        <div className="divUno">
+          <h5 className="titulo">Sistema de inscripción UTEM</h5>
+          <h6 className="titulo">Modo Administrador</h6> 
+        </div>
+        <div className="navAdmin">
+            <Link className=" nav-link active out" to="/" onClick={handleLogout}>
+              <button className="btn btn-danger">Cerrar sesion</button>
+            </Link>         
+        </div>
+      </nav>
       <div className="bg-light container">
           {/*Radios para seleccionar facultad o carrera*/}
           <h5>Seleccione opción</h5> 
