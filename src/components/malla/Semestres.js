@@ -19,14 +19,14 @@ export const Semestres = () => {
     <>
       {malla ? (
         <>
-          <table width="100%">
-            <tr className="flex">
+          <div width="100%">
+            <header className="flex">
               {getHeadMalla(malla.asignaturas).map((numeroSemestre) => (
                 <div key={numeroSemestre} className="flex-element ">
                   <h4>{numeroSemestre}</h4>
                 </div>
               ))}
-            </tr>
+            </header>
 
             <div className="flex">
               {getHeadMalla(malla.asignaturas).map((h) => (
@@ -47,7 +47,7 @@ export const Semestres = () => {
                         id="staticBackdrop"
                         data-bs-backdrop="static"
                         data-bs-keyboard="false"
-                        tabindex="-1"
+                        tabIndex="-1"
                         aria-labelledby="staticBackdropLabel"
                         aria-hidden="true"
                       >
@@ -93,7 +93,7 @@ export const Semestres = () => {
                 </section>
               ))}
             </div>
-          </table>
+          </div>
         </>
       ) : (
         <h1>NO malla</h1>

@@ -1,12 +1,13 @@
 import React from "react";
 import { Semestres } from "./Semestres";
+import "./styles/malla.css";
 
 export const Malla = () => {
   return (
     <div>
       <div className="m-2">
         <h2>Malla</h2>
-        <div className="row m-1 border border-2 border-dark bg-light">
+        <div className="row m-1 border border-2 border-dark bg-light malla-container">
           <div className="m-1">
             <table className="table table-condensed" width="100%">
               <tbody>
