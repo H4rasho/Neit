@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { HashRouter as Router, Switch } from "react-router-dom";
+import { HashRouter as Router, Redirect, Switch } from "react-router-dom";
 import { startChecking } from "../actions/auth";
 import { Login } from "../components/auth/Login";
+import { validarUserType } from "../helpers/validarUserType";
+import { AdminRoutes } from "./AdminRoutes";
 
 import { InscriptionRoutes } from "./InscriptionRoutes";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
 
 export default function AppRouter() {
-  const { checking, uid } = useSelector((state) => state.auth);
-  let isLogin = !!uid;
+  const { checking, uid, userType } = useSelector((state) => state.auth);
+
+  const { loggedEstudiante, loggedAdmin } = validarUserType(userType, uid);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,20 +24,29 @@ export default function AppRouter() {
     return <h5>Espere</h5>;
   }
 
+  console.log(loggedEstudiante);
+
   return (
     <Router>
       <div>
         <Switch>
           <PublicRoutes
-            path="/auth"
+            exact
+            path="/"
             component={Login}
-            isAuthenticated={isLogin}
+            isAuthenticated={!!uid}
           />
           <PrivateRoutes
-            path="/"
+            path="/estudiante"
             component={InscriptionRoutes}
-            isAuthenticated={isLogin}
+            isAuthenticated={loggedEstudiante}
           />
+          <PrivateRoutes
+            path="/admin"
+            component={AdminRoutes}
+            isAuthenticated={loggedAdmin}
+          />
+          <Redirect to="/" />
         </Switch>
       </div>
     </Router>

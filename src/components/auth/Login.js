@@ -26,7 +26,6 @@ export const Login = ({ history }) => {
     }
 
     dispatch(startlogin(email, password, userType));
-    history.replace("/");
   };
 
   return (

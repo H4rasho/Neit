@@ -6,7 +6,7 @@ import { Home } from "../components/home/Home";
 import { Horario } from "../components/horario/Horario";
 import { Inscripcion } from "../components/inscripcion/Inscripcion";
 import { Malla } from "../components/malla/Malla";
-import { Oferta } from "../components/ofertaAc/Oferta";
+
 import { Navbar } from "../components/ui/Navbar";
 
 export const InscriptionRoutes = () => {
@@ -22,11 +22,10 @@ export const InscriptionRoutes = () => {
     <div>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/Inscripcion" component={Inscripcion} />
-        <Route exact path="/Horario" component={Horario} />
-        <Route exact path="/Malla" component={Malla} />
-        <Route exact path="/Oferta" component={Oferta} />
+        <Route exact path="/estudiante" component={Home} />
+        <Route exact path="/estudiante/Inscripcion" component={Inscripcion} />
+        <Route exact path="/estudiante/Horario" component={Horario} />
+        <Route exact path="/estudiante/Malla" component={Malla} />
         <Redirect to="/" />
       </Switch>
     </div>
