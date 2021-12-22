@@ -52,11 +52,6 @@ export const Navbar = () => {
                   Mi malla curricular
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/Oferta">
-                  Crear oferta académica
-                </Link>
-              </li>
               <li className="nav-item out">
                 <Link className="nav-link active" to="/" onClick={handleLogout}>
                   Cerrar sesion
