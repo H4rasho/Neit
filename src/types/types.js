@@ -15,4 +15,6 @@ export const types = {
   inscripcionEliminarAsingatura: "[Incripcion] eliminar de la inscripcion",
   inscripcionObetenrIncripcion: "[Incripcion] obtener inscripcion",
   incripcionHorario: "[Incripcion] añadir horario",
+
+  adminGetFacultades: "[Admin] get Facultades ",
 };

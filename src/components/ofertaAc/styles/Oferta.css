@@ -1,23 +1,12 @@
-.lista:hover
-{
-    background-color: rgb(190, 190, 190);
-    transition: .9s;
+.lista:hover {
+  background-color: rgb(190, 190, 190);
+  transition: 0.9s;
 }
 
-.tamano
-{
-    width: auto;
+.tamano {
+  width: auto;
 }
 
-.navAdmin
-{
-    color: white;
-    background-color: #29af87;
+.container {
+  padding: 20px;
 }
-
-.out
-{
-    color: white;
-    
-}
-

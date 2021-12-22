@@ -1,23 +1,28 @@
-.titulo
-{
-    margin-left: 10px;
+.titulo {
+  margin-left: 10px;
 }
 
-.divUno
-{
-    background-color: #29af87;
-    height: 50px;
-    color: white;
+.divUno {
+  background-color: #29af87;
+  height: 50px;
+  color: white;
 }
 
-.navm
-{
-    background-color: #29af87;
+.navm {
+  background-color: #29af87;
 }
 
-.navm li:hover
-{
-    background-color: #117456;
-    transition: background-color .7s;
-    border-radius: 3px 3px 3px 3px;
+.navm li:hover {
+  background-color: #117456;
+  transition: background-color 0.7s;
+  border-radius: 3px 3px 3px 3px;
+}
+
+.navAdmin {
+  color: white;
+  background-color: #29af87;
+}
+
+.out {
+  color: white;
 }

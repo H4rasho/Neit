@@ -1,137 +1,91 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { startLogout } from "../../actions/auth";
+import { startgetFacultades } from "../../actions/facultad";
+
 import "./styles/Oferta.css";
 
-
 export const Oferta = () => {
+  const { checkingFacultad, facultades, carreras } = useSelector(
+    (state) => state.admin
+  );
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(startLogout());
+  const [modo, setModo] = useState("facultad");
+
+  const [option, setOption] = useState("");
+
+  const handleChange = (e) => {
+    setOption(e.target.value);
   };
+
+  const handleFacultad = () => {
+    setModo("facultad");
+  };
+
+  const handleCarrera = () => {
+    setModo("carrera");
+  };
+
+  useEffect(() => {
+    dispatch(startgetFacultades());
+  }, [dispatch]);
+
+  if (checkingFacultad) {
+    return <h1>cargando...</h1>;
+  }
+
   return (
-    <div>
-      <nav>
-        <div className="divUno">
-          <h5 className="titulo">Sistema de inscripción UTEM</h5>
-          <h6 className="titulo">Modo Administrador</h6> 
-        </div>
-        <div className="navAdmin">
-            <Link className=" nav-link active out" to="/" onClick={handleLogout}>
-              <button className="btn btn-danger">Cerrar sesion</button>
-            </Link>         
-        </div>
-      </nav>
-      <div className="bg-light container">
-          {/*Radios para seleccionar facultad o carrera*/}
-          <h5>Seleccione opción</h5> 
-          <div className="form-check-inline">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="userTypeForm"
-                  id="flexRadioDefault1"
-                  value="estudiante"
-                ></input>
-                <label className="form-check-label" htmlFor="flexRadioDefault1">
-                  &nbsp;Facultad
-                </label>
-          </div>
-          <div className="form-check-inline">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="userTypeForm"
-                  id="flexRadioDefault2"
-                  value="admin"
-                ></input>
-                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                  &nbsp;Carrera
-                </label>
-          </div>
-
-          {/*Despliegue de lista según modo escogido*/}
-          <select className="mt-2 form-select tamano" defaultValue="">
-            <option value="" disabled>Lista según modo</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-
-          {/*Tabla con el registro de asignaturas*/}
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">N°</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Sección</th>
-                <th scope="col">Agregar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Nombre</td>
-                <td>Sección</td>
-                <td>
-                  {/*Modal para agregar detalles de la asignatura*/}
-                  <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Agregar
-                  </button>
-                  <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLabel">Registrar asignatura</h5>
-                          <button type="button" 
-                            className="btn-close" 
-                            data-bs-dismiss="modal" 
-                            aria-label="Close"
-                          > 
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          {/*Formulario para datos de la asignatura*/}
-                          <form>
-
-                            <div className="mb-3">
-                              <label htmlFor="exampleInputEmail1" className="form-label">Docente</label>
-                              <input type="text" className="form-control" id="docente"></input>
-                            </div>
-
-                            <div className="mb-3">
-                              <label htmlFor="exampleInputPassword1" className="form-label">Horario</label>
-                              <input type="text" className="form-control" id="dia" placeholder="Dia"></input>
-                              <input type="text" className="form-control" id="horainicio" placeholder="Hora de inicio"></input>
-                              <input type="text" className="form-control" id="horafinal" placeholder="Hora de salida"></input>
-                            </div>
-
-                            <div className="mb-3">
-                              <label htmlFor="exampleInputEmail1" className="form-label">Cupos</label>
-                              <input type="text" className="form-control" id="cupos"></input>
-                            </div>
-
-                          </form>
-                        </div>
-                        <div className="modal-footer">
-                          <button type="button" 
-                            className="btn btn-danger" 
-                            data-bs-dismiss="modal"
-                          >
-                            Cerrar</button>
-                          <button type="button" className="btn btn-success">Registrar datos</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
+    <div className="bg-light container">
+      {/*Radios para seleccionar facultad o carrera*/}
+      <h5>Seleccione opción</h5>
+      <div className="form-check-inline">
+        <input
+          className="form-check-input"
+          type="radio"
+          name="userTypeForm"
+          id="flexRadioDefault1"
+          value="facultad"
+          onClick={handleFacultad}
+        ></input>
+        <label className="form-check-label" htmlFor="flexRadioDefault1">
+          &nbsp;Facultad
+        </label>
       </div>
+      <div className="form-check-inline">
+        <input
+          className="form-check-input"
+          type="radio"
+          name="userTypeForm"
+          id="flexRadioDefault2"
+          value="admin"
+          onClick={handleCarrera}
+        ></input>
+        <label className="form-check-label" htmlFor="flexRadioDefault2">
+          &nbsp;Carrera
+        </label>
+      </div>
+
+      {/*Despliegue de lista según modo escogido*/}
+      <select
+        className="mt-2 form-select tamano"
+        defaultValue=""
+        onChange={handleChange}
+      >
+        <option value="">Lista según modo</option>
+        {modo === "facultad"
+          ? facultades.map((f) => (
+              <option value={f.nombre} key={f.id} name="section">
+                {f.nombre}
+              </option>
+            ))
+          : carreras.map((c) => (
+              <option value={c.nombre} key={c.id} name="section">
+                {c.nombre}
+              </option>
+            ))}
+      </select>
+      <Link to="/admin/asignaturas">Siguiente</Link>
     </div>
   );
 };
