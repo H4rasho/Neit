@@ -19,15 +19,17 @@ export const Semestres = () => {
     <>
       {malla ? (
         <>
-          <header className="flex" >
-              {getHeadMalla(malla.asignaturas).map((numeroSemestre) => (
-                <div key={numeroSemestre} className="flex-element">
-                  <h4>{numeroSemestre}</h4>
-                </div>
-              ))}
-          </header>
-          <div>
-                
+          {/*CUADRO DEL NÚMERO DE SEMESTRE*/}
+          <div className="overflow-auto">
+            <div className="flex">
+                {getHeadMalla(malla.asignaturas).map((numeroSemestre) => (
+                  <div key={numeroSemestre} >
+                    <h4 className="flex-element">{numeroSemestre}</h4>
+                  </div>
+                ))}
+            </div>
+            
+            {/*BOTONES DE LAS ASIGNATURAS*/}
             <div className="flex">
                 {getHeadMalla(malla.asignaturas).map((h) => (
                   <section key={h}>

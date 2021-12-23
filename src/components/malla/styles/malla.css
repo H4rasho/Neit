@@ -1,5 +1,5 @@
 .flex {
-  display: flex;
+  display: flex ;
 }
 
 .flex-element {
@@ -11,7 +11,7 @@
   font-family: "Helvetica", sans-serif;
   border-radius: 50px; 
   text-align: center;
-  width: 130px;
+  width: 130px; 
 }
 
 .botonAsignatura {
@@ -20,6 +20,6 @@
 }
 
 .letra {
-  display: flex;
   font-size: 2vh;
+  
 }
