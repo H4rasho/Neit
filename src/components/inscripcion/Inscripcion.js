@@ -107,7 +107,7 @@ export const Inscripcion = ({ history }) => {
           <div className="border-bottom marco2">Limite de ramos:</div>
           {inscripcion.map((inscr) => (
             <div key={inscr.id} className="incripcion__div">
-              <h5>{inscr.nombre}</h5>
+              <h6>{inscr.nombre}</h6>
               <button
                 className="btn btn-danger"
                 onClick={() => handleEliminar(inscr)}

@@ -25,16 +25,38 @@
 }
 
 .aprobado {
-  background-color: #d1e7dd;
+  background-color: #c5e6d7;
   color: #000;
+  border: #d1e7dd;
+}
+
+.aprobado:hover {
+  background-color: #80e4b7;
+  color: #000;
+  transition: .9s;
 }
 
 .no-inscrito {
-  background-color: #e2e3e5;
+  background-color: #cecece;
   color: #000;
+  border: #cecece;
+}
+
+.no-inscrito:hover {
+  background-color: #919191;
+  color: #000;
+  transition: .9s;
 }
 
 .reprobado {
-  background-color: #f8d7da;
+  background-color: #ecafb4;
   color: #000;
+  border: #f8d7da;
 }
+
+.reprobado:hover {
+  background-color: #e07f89;
+  color: #000;
+  transition: .9s;
+}
+

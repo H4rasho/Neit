@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import { startGetAsignaturasAdmin } from "../../actions/asignaturas";
 import {
   adminActiveAsignatura,
@@ -83,6 +85,13 @@ export const Tabla = () => {
     console.log(newAsignautura);
     dispatch(adminOfertaAcademicaSetAsignatura(newAsignautura));
     setSecciones([]);
+    Swal.fire({
+      title: "Asignatura agregada",
+      text: "Has agregado una asignatura a la oferta",
+      icon: "success",
+      showConfirmButton: false,
+      timer: 2000,
+    });
   };
 
   const handleCerrar = (e) => {
@@ -102,8 +111,7 @@ export const Tabla = () => {
           <tr>
             <th scope="col">N°</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Sección</th>
-            <th scope="col">Agregar</th>
+            <th scope="col">Estado</th>
           </tr>
         </thead>
         <tbody>
@@ -112,11 +120,17 @@ export const Tabla = () => {
               <tr key={asig.id}>
                 <th scope="row">{key}</th>
                 <td>{asig.nombre}</td>
-                <td>Sección</td>
                 <td>
                   {/*Modal para agregar detalles de la asignatura*/}
                   {asig.ready ? (
-                    <h3>Listo</h3>
+                    <button 
+                      type="button" 
+                      className="btn btn-primary"
+                      disabled
+                    >
+                      Añadido
+                    </button>
+                    
                   ) : (
                     <button
                       type="button"
@@ -211,7 +225,9 @@ export const Tabla = () => {
                                 name="horaFin"
                                 onChange={handleInputChange}
                               ></input>
-                              <button onClick={handleGuardarHorario}>
+                              <button 
+                                  className="btn btn-success m-1" 
+                                  onClick={handleGuardarHorario}>
                                 Añadir Horario
                               </button>
                             </div>
@@ -250,7 +266,12 @@ export const Tabla = () => {
                           >
                             Añadir Seccion
                           </button>
-                          <button onClick={handleFinalizar}>Finalizar</button>
+                          <button 
+                            className="btn btn-danger m-1" 
+                            onClick={handleFinalizar}
+                          >
+                            Finalizar
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -263,7 +284,12 @@ export const Tabla = () => {
           )}
         </tbody>
       </table>
-      <button onClick={handleOfertaAcademica}>Crear Oferta Académica</button>
+      <button 
+        onClick={handleOfertaAcademica}
+        className="m-1 btn btn-primary"
+      >
+        Crear Oferta Académica
+      </button>
     </div>
   );
 };
