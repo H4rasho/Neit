@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import { fetchConToken } from "../helpers/fetch";
 import { types } from "../types/types";
 
+//estudiante
 export const startGetAsignaturas = (idEstudiante, idCarrera, idFacultad) => {
   return async (dispatch) => {
     const resp = await fetchConToken(
@@ -32,6 +33,7 @@ export const inscribirAsignautra = (asignatura) => ({
   payload: asignatura,
 });
 
+//estudiante
 export const realizarIncripcion = async (inscripcion, estudiante) => {
   const newIncripcion = {
     estudiante,
@@ -53,6 +55,7 @@ export const realizarIncripcion = async (inscripcion, estudiante) => {
   }
 };
 
+//estudiante
 export const startGetIncripcion = (idEstudiante) => {
   return async (dispatch) => {
     const resp = await fetchConToken(`private/inscripcion/${idEstudiante}`);
@@ -80,7 +83,7 @@ export const agregarAlHorario = (horario) => ({
   type: types.incripcionHorario,
   payload: horario,
 });
-
+// estudiante
 export const startObtenerMalla = (idEstudiante) => {
   return async (dispatch) => {
     const resp = await fetchConToken(`private/avanceMalla/${idEstudiante}`);
@@ -101,4 +104,22 @@ const obetenerMalla = (malla) => ({
 
 export const startChecking = () => ({
   type: types.inscripcionStartChecking,
+});
+//admin
+export const startGetAsignaturasAdmin = (data) => {
+  return async (dispatch) => {
+    const resp = await fetchConToken("private/asignaturas/admin", data, "POST");
+    const body = await resp.json();
+
+    if (body.ok) {
+      dispatch(getAsignaturasAdmin(body.asignaturas));
+    } else {
+      console.log(body.msg);
+    }
+  };
+};
+
+const getAsignaturasAdmin = (asignaturas) => ({
+  type: types.adminGetAsignaturas,
+  payload: asignaturas,
 });
