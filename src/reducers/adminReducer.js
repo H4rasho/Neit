@@ -67,6 +67,9 @@ export const adminReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case types.authLogout: {
+      return initialState;
+    }
 
     default:
       return {
