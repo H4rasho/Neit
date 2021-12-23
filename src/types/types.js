@@ -17,4 +17,13 @@ export const types = {
   incripcionHorario: "[Incripcion] añadir horario",
 
   adminGetFacultades: "[Admin] get Facultades ",
+  adminSetOption: "[Admin] set Option",
+  adminGetAsignaturas: "[Admin] get Asignaturas",
+  adminActiveAsignatura: "[Admin] active asignautra",
+  adminOfertaAcademicaSetFacultad: "[Admin] oferta academica set facultad",
+  adminOfertaAcademicaSetCarrera: "[Admin] oferta academica set carrera",
+  adminOfertaAcademicaSetAsignatura: "[Admin] oferta academica set asignatura",
+  adminOfertaAcademicaAddSeccion: "[Admin] oferta academica add sección",
+  adminLimpearOfertaAcademica: "[Admin] Limpiar oferta academica asignatura",
+  adminCrearOfertaAcademica: "[Admin] crear oferta academica",
 };

@@ -1,7 +1,100 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { startGetAsignaturasAdmin } from "../../actions/asignaturas";
+import {
+  adminActiveAsignatura,
+  adminCrearOfertaAcademica,
+  adminOfertaAcademicaSetAsignatura,
+  adminOfertaAcademicaSetCarrera,
+  adminOfertaAcademicaSetFacultad,
+} from "../../actions/facultad";
+import { useForm } from "../../hooks/useForm";
 import "./styles/Oferta.css";
 
 export const Tabla = () => {
+  const {
+    option,
+    asignaturas,
+    checkingAsignaturas,
+    activeAsignatura,
+    ofertaAcademica,
+  } = useSelector((state) => state.admin);
+
+  const [values, handleInputChange, rest, restHorario] = useForm({
+    docente: "",
+    dia: "",
+    horaInicio: "",
+    horaFin: "",
+    cupos: "",
+  });
+
+  const { docente, dia, horaInicio, horaFin, cupos } = values;
+  const [horarios, setHorarios] = useState([]);
+  const [secciones, setSecciones] = useState([]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(startGetAsignaturasAdmin(option));
+    if (option && option.modo === "facultad") {
+      dispatch(adminOfertaAcademicaSetFacultad(option.id));
+    } else if (option && option.modo === "carrera") {
+      dispatch(adminOfertaAcademicaSetCarrera(option.id));
+    }
+  }, [dispatch, option]);
+
+  if (!option) {
+    return <Redirect to="/admin"></Redirect>;
+  }
+
+  const handleAgregarAsignatura = (asig) => {
+    dispatch(adminActiveAsignatura(asig));
+  };
+
+  const handleGuardarHorario = (e) => {
+    e.preventDefault();
+    setHorarios([...horarios, { dia, horaInicio, horaFin }]);
+    restHorario();
+  };
+
+  if (checkingAsignaturas) {
+    return <h1>Cargando</h1>;
+  }
+
+  const onSubmitSeccion = (e) => {
+    e.preventDefault();
+    const newSeccion = {
+      docente,
+      horarios,
+      cuposMax: cupos,
+    };
+    setSecciones([...secciones, newSeccion]);
+    setHorarios([]);
+    rest();
+  };
+
+  const handleFinalizar = (e) => {
+    e.preventDefault();
+    const newAsignautura = {
+      id: activeAsignatura.id,
+      secciones,
+    };
+    console.log(newAsignautura);
+    dispatch(adminOfertaAcademicaSetAsignatura(newAsignautura));
+    setSecciones([]);
+  };
+
+  const handleCerrar = (e) => {
+    e.preventDefault();
+    setHorarios([]);
+    setSecciones([]);
+  };
+
+  const handleOfertaAcademica = () => {
+    adminCrearOfertaAcademica(ofertaAcademica);
+  };
+
   return (
     <div className="bg-light">
       <table className="table">
@@ -14,118 +107,163 @@ export const Tabla = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Nombre</td>
-            <td>Sección</td>
-            <td>
-              {/*Modal para agregar detalles de la asignatura*/}
-              <button
-                type="button"
-                className="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
-                Agregar
-              </button>
-              <div
-                className="modal fade"
-                id="exampleModal"
-                tabIndex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel">
-                        Registrar asignatura
-                      </h5>
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div className="modal-body">
-                      {/*Formulario para datos de la asignatura*/}
-                      <form>
-                        <div className="mb-3">
-                          <label
-                            htmlFor="exampleInputEmail1"
-                            className="form-label"
-                          >
-                            Docente
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="docente"
-                          ></input>
+          {asignaturas ? (
+            asignaturas.map((asig, key) => (
+              <tr key={asig.id}>
+                <th scope="row">{key}</th>
+                <td>{asig.nombre}</td>
+                <td>Sección</td>
+                <td>
+                  {/*Modal para agregar detalles de la asignatura*/}
+                  {asig.ready ? (
+                    <h3>Listo</h3>
+                  ) : (
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      onClick={() => handleAgregarAsignatura(asig)}
+                    >
+                      Agregar
+                    </button>
+                  )}
+                  <div
+                    className="modal fade"
+                    id="exampleModal"
+                    tabIndex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLabel">
+                            Registrar asignatura
+                          </h5>
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
                         </div>
+                        <div className="modal-body">
+                          {/*Formulario para datos de la asignatura*/}
+                          <form>
+                            <div className="mb-3">
+                              <label
+                                htmlFor="exampleInputEmail1"
+                                className="form-label"
+                              >
+                                Docente
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="docente"
+                                value={docente}
+                                name="docente"
+                                onChange={handleInputChange}
+                              ></input>
+                            </div>
 
-                        <div className="mb-3">
-                          <label
-                            htmlFor="exampleInputPassword1"
-                            className="form-label"
-                          >
-                            Horario
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="dia"
-                            placeholder="Dia"
-                          ></input>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="horainicio"
-                            placeholder="Hora de inicio"
-                          ></input>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="horafinal"
-                            placeholder="Hora de salida"
-                          ></input>
-                        </div>
+                            <div className="mb-3">
+                              <label
+                                htmlFor="exampleInputPassword1"
+                                className="form-label"
+                              >
+                                Horarios
+                              </label>
+                              {horarios.length > 0 ? (
+                                horarios.map((h, key) => (
+                                  <p
+                                    key={key}
+                                  >{`${h.dia} - ${h.horaInicio} - ${h.horaFin}`}</p>
+                                ))
+                              ) : (
+                                <p>Sin horarios</p>
+                              )}
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="dia"
+                                placeholder="Dia"
+                                value={dia}
+                                name="dia"
+                                onChange={handleInputChange}
+                              ></input>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="horainicio"
+                                placeholder="Hora de inicio"
+                                value={horaInicio}
+                                name="horaInicio"
+                                onChange={handleInputChange}
+                              ></input>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="horafinal"
+                                placeholder="Hora de salida"
+                                value={horaFin}
+                                name="horaFin"
+                                onChange={handleInputChange}
+                              ></input>
+                              <button onClick={handleGuardarHorario}>
+                                Añadir Horario
+                              </button>
+                            </div>
 
-                        <div className="mb-3">
-                          <label
-                            htmlFor="exampleInputEmail1"
-                            className="form-label"
-                          >
-                            Cupos
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="cupos"
-                          ></input>
+                            <div className="mb-3">
+                              <label
+                                htmlFor="exampleInputEmail1"
+                                className="form-label"
+                              >
+                                Cupos
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="cupos"
+                                value={cupos}
+                                name="cupos"
+                                onChange={handleInputChange}
+                              ></input>
+                            </div>
+                          </form>
                         </div>
-                      </form>
-                    </div>
-                    <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        data-bs-dismiss="modal"
-                      >
-                        Cerrar
-                      </button>
-                      <button type="button" className="btn btn-success">
-                        Registrar datos
-                      </button>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-danger"
+                            data-bs-dismiss="modal"
+                            onClick={handleCerrar}
+                          >
+                            Cerrar
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-success"
+                            onClick={onSubmitSeccion}
+                          >
+                            Añadir Seccion
+                          </button>
+                          <button onClick={handleFinalizar}>Finalizar</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </td>
-          </tr>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <h1>No hay asignaturas</h1>
+          )}
         </tbody>
       </table>
+      <button onClick={handleOfertaAcademica}>Crear Oferta Académica</button>
     </div>
   );
 };
