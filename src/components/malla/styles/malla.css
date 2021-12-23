@@ -1,5 +1,5 @@
 .flex {
-  display: flex ;
+  display: flex;
   justify-content: space-between;
 }
 
@@ -10,9 +10,9 @@
   background-color: #29af87;
   color: #ffffff;
   font-family: "Helvetica", sans-serif;
-  border-radius: 50px; 
+  border-radius: 50px;
   text-align: center;
-  width: 130px; 
+  width: 130px;
 }
 
 .botonAsignatura {
@@ -22,5 +22,19 @@
 
 .letra {
   font-size: 2vh;
-  
+}
+
+.aprobado {
+  background-color: #d1e7dd;
+  color: #000;
+}
+
+.no-inscrito {
+  background-color: #e2e3e5;
+  color: #000;
+}
+
+.reprobado {
+  background-color: #f8d7da;
+  color: #000;
 }
