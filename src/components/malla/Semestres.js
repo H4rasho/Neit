@@ -41,7 +41,7 @@ export const Semestres = () => {
                           data-bs-toggle="modal"
                           data-bs-target="#staticBackdrop"
                         >
-                          <div className="text-end">7,0</div>
+                          <div className="text-end">{asignatura.promedio}</div> {/*NOTA ASIGNATURA*/}
                           <p>{asignatura.id.nombre}</p>
                         </button>
                         <div
