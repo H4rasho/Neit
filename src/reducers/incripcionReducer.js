@@ -76,6 +76,7 @@ export const incripcionReducer = (state = initialState, action) => {
       return {
         ...state,
         inscripcionRealizada: null,
+        inscripcion: [],
       };
 
     default:
