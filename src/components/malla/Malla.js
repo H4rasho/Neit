@@ -6,7 +6,7 @@ export const Malla = () => {
   return (
     <div>
       <div className="m-1">
-        <div className="row m-1 rounded-3 bg-light letra">
+        <div className="row overflow-auto m-1 rounded-3 bg-light letra">
           <div className="m-1">
             <table className="table table-condensed" width="100%">
               <tbody>
@@ -28,12 +28,10 @@ export const Malla = () => {
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table>           
           </div>
-          <div className="m-1">
-            <Semestres />
-          </div>
-        </div>
+          <Semestres />       
+        </div>       
       </div>
     </div>
   );

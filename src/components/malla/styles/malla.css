@@ -1,11 +1,5 @@
-.malla-container {
-  width: 1700px;
-}
-
 .flex {
   display: flex;
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 .flex-element {
@@ -14,19 +8,18 @@
   padding: 1px;
   background-color: #29af87;
   color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
   font-family: "Helvetica", sans-serif;
-  border-radius: 50px;
-  width: 150px;
+  border-radius: 50px; 
   text-align: center;
+  width: 130px;
 }
 
 .botonAsignatura {
-  width: 150px;
+  width: 130px;
   border-radius: 15px;
 }
 
 .letra {
+  display: flex;
   font-size: 2vh;
 }
