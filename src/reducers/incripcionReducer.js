@@ -8,6 +8,7 @@ const initialState = {
   habilitado: true,
   checking: true,
   horario: [],
+  checkingInscripcion: true,
 };
 
 export const incripcionReducer = (state = initialState, action) => {
@@ -35,8 +36,9 @@ export const incripcionReducer = (state = initialState, action) => {
     case types.inscripcionObetenrIncripcion:
       return {
         ...state,
-        inscripcion: action.payload,
+        inscripcionRealizada: action.payload,
         habilitado: false,
+        checkingInscripcion: false,
       };
     case types.authLogout:
       return initialState;
@@ -68,6 +70,12 @@ export const incripcionReducer = (state = initialState, action) => {
     case types.inscripcionStartChecking:
       return {
         checking: true,
+      };
+
+    case types.incripcionReahacer:
+      return {
+        ...state,
+        inscripcionRealizada: null,
       };
 
     default:

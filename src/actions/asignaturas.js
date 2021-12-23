@@ -62,9 +62,7 @@ export const startGetIncripcion = (idEstudiante) => {
     const body = await resp.json();
 
     if (body.ok) {
-      if (!body.habilitado) {
-        dispatch(obetenerIncripcion());
-      }
+      dispatch(obetenerIncripcion(body.inscripcion));
     }
   };
 };
@@ -122,4 +120,26 @@ export const startGetAsignaturasAdmin = (data) => {
 const getAsignaturasAdmin = (asignaturas) => ({
   type: types.adminGetAsignaturas,
   payload: asignaturas,
+});
+
+export const reahcer = (idEstudiante) => {
+  return async (dispatch) => {
+    const resp = await fetchConToken(
+      `private/inscripcion/${idEstudiante}`,
+      {},
+      "DELETE"
+    );
+    const body = await resp.json();
+
+    if (body.ok) {
+      dispatch(rehacerInc());
+      Swal.fire("Rehacer Inscripcion", "Realizada!", "success");
+    } else {
+      Swal.fire("Error", body.msg, "error");
+    }
+  };
+};
+
+const rehacerInc = () => ({
+  type: types.incripcionReahacer,
 });
