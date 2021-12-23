@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { startGetAsignaturasAdmin } from "../../actions/asignaturas";
 import {
@@ -123,14 +122,9 @@ export const Tabla = () => {
                 <td>
                   {/*Modal para agregar detalles de la asignatura*/}
                   {asig.ready ? (
-                    <button 
-                      type="button" 
-                      className="btn btn-primary"
-                      disabled
-                    >
+                    <button type="button" className="btn btn-primary" disabled>
                       Añadido
                     </button>
-                    
                   ) : (
                     <button
                       type="button"
@@ -225,9 +219,10 @@ export const Tabla = () => {
                                 name="horaFin"
                                 onChange={handleInputChange}
                               ></input>
-                              <button 
-                                  className="btn btn-success m-1" 
-                                  onClick={handleGuardarHorario}>
+                              <button
+                                className="btn btn-success m-1"
+                                onClick={handleGuardarHorario}
+                              >
                                 Añadir Horario
                               </button>
                             </div>
@@ -266,8 +261,8 @@ export const Tabla = () => {
                           >
                             Añadir Seccion
                           </button>
-                          <button 
-                            className="btn btn-danger m-1" 
+                          <button
+                            className="btn btn-danger m-1"
                             onClick={handleFinalizar}
                           >
                             Finalizar
@@ -284,10 +279,7 @@ export const Tabla = () => {
           )}
         </tbody>
       </table>
-      <button 
-        onClick={handleOfertaAcademica}
-        className="m-1 btn btn-primary"
-      >
+      <button onClick={handleOfertaAcademica} className="m-1 btn btn-primary">
         Crear Oferta Académica
       </button>
     </div>

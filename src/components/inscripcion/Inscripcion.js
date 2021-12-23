@@ -10,6 +10,7 @@ import { Horario } from "../horario/Horario";
 import { AsignaturaModal } from "./AsignaturaModal";
 import "./styles/inscripcion.css";
 import Swal from "sweetalert2";
+import { InscripcionRealizada } from "./InscripcionRealizada";
 
 export const Inscripcion = ({ history }) => {
   const { asignaturas, inscripcion, habilitado } = useSelector(
@@ -17,7 +18,8 @@ export const Inscripcion = ({ history }) => {
   );
 
   const { uid } = useSelector((state) => state.auth);
-  const { asignaturasDB } = useSelector((state) => state.inscripcion);
+  const { asignaturasDB, inscripcionRealizada, checkingInscripcion } =
+    useSelector((state) => state.inscripcion);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +42,6 @@ export const Inscripcion = ({ history }) => {
       showConfirmButton: false,
       timer: 2000,
     });
-
   };
 
   const unirHorarios = (horarios) => {
@@ -51,8 +52,12 @@ export const Inscripcion = ({ history }) => {
 
     return templateHorario;
   };
-  if (!habilitado) {
-    return <h1>Usted ya ha realizado una inscripcion</h1>;
+  if (!habilitado && inscripcionRealizada) {
+    return <InscripcionRealizada inscripcion={inscripcionRealizada} />;
+  }
+
+  if (checkingInscripcion) {
+    return <h1>Cargando</h1>;
   }
 
   return (
@@ -71,33 +76,33 @@ export const Inscripcion = ({ history }) => {
             <h1>No hay asignaturas</h1>
           )}
         </div>
-        
+
         <div className="col-8">
           <Horario />
-            <table className="table table-bordered table-striped border-light text-center Tseccion">            
-              <thead>
-                <tr>
-                  <th scope="row" colSpan="2">
-                    Asignatura
-                  </th>
-                  <th scope="col" colSpan="2">
-                    Profesor
-                  </th>
-                  <th scope="col" colSpan="2">
-                    Horario
-                  </th>
+          <table className="table table-bordered table-striped border-light text-center Tseccion">
+            <thead>
+              <tr>
+                <th scope="row" colSpan="2">
+                  Asignatura
+                </th>
+                <th scope="col" colSpan="2">
+                  Profesor
+                </th>
+                <th scope="col" colSpan="2">
+                  Horario
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {inscripcion.map((insc) => (
+                <tr key={insc.id}>
+                  <td colSpan="2">{insc.nombre}</td>
+                  <td colSpan="2">{insc.seccion.docente}</td>
+                  <td colSpan="2">{unirHorarios(insc.seccion.horarios)}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {inscripcion.map((insc) => (
-                  <tr key={insc.id}>
-                    <td colSpan="2">{insc.nombre}</td>
-                    <td colSpan="2">{insc.seccion.docente}</td>
-                    <td colSpan="2">{unirHorarios(insc.seccion.horarios)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              ))}
+            </tbody>
+          </table>
         </div>
 
         <div className="col-2 border border-3 border-dark bg-light columna3">
@@ -115,9 +120,8 @@ export const Inscripcion = ({ history }) => {
                 Eliminar
               </button>
             </div>
-          ))}         
+          ))}
         </div>
-        
 
         <div className="row">
           <div className="col-2"></div>
