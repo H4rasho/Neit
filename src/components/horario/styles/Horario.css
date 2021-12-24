@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .clendarContainer {
   width: 87%;
   height: auto;
@@ -6,4 +7,19 @@
   margin-right: auto; 
   display: flex;
 
+=======
+.Thorario {
+  width: 90%;
+  margin-top: 5%;
+  margin-left: 5.5%;
+  font-size: 12px;
+  color: rgb(34, 34, 34);
+  background-color: rgb(221, 221, 221);
+}
+
+.clendarContainer {
+  width: auto;
+  height: auto;
+  background-color: #fff;
+>>>>>>> 8ef41c1add3ab9fa3d6be91911eeb947a2ad54df
 }

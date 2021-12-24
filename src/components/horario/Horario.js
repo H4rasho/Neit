@@ -29,19 +29,19 @@ export const Horario = () => {
   return (
     <div className="">
       <div className="overflow-auto clendarContainer">
-          <Calendar
-            localizer={localizer}
-            events={horario}
-            startAccessor="start"
-            min={fechaInicio}
-            max={fechaTermino}
-            endAccessor="end"
-            style={{ height: 600, width: 800 }}
-            defaultView="week"
-            toolbar={false}
-            defaultDate={fechaInicio}
-            formats={formats}
-          />
+        <Calendar
+          localizer={localizer}
+          events={horario}
+          startAccessor="start"
+          min={fechaInicio}
+          max={fechaTermino}
+          endAccessor="end"
+          style={{ height: 600, width: 800 }}
+          defaultView="week"
+          toolbar={false}
+          defaultDate={fechaInicio}
+          formats={formats}
+        />
       </div>
     </div>
   );
