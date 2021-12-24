@@ -73,9 +73,15 @@ export const Semestres = () => {
                             <div className="modal-body">
                               <div className="card">
                                 <ul className="list-group list-group-flush">
-                                  <li className="list-group-item">Estado : </li>
-                                  <li className="list-group-item">Tipo : </li>
-                                  <li className="list-group-item">Nota : </li>
+                                  <li className="list-group-item">
+                                    Estado : {asignatura.estado}{" "}
+                                  </li>
+                                  <li className="list-group-item">
+                                    Tipo : {asignatura.id.tipo}{" "}
+                                  </li>
+                                  <li className="list-group-item">
+                                    Nota : {asignatura.promedio}{" "}
+                                  </li>
                                 </ul>
                               </div>
                             </div>

@@ -10,8 +10,12 @@ import {
   adminOfertaAcademicaSetCarrera,
   adminOfertaAcademicaSetFacultad,
 } from "../../actions/facultad";
+import { disValidos } from "../../helpers/validarCapos";
 import { useForm } from "../../hooks/useForm";
 import "./styles/Oferta.css";
+import moment from "moment";
+import "moment/locale/es";
+moment.locale("es");
 
 export const Tabla = () => {
   const {
@@ -55,7 +59,40 @@ export const Tabla = () => {
 
   const handleGuardarHorario = (e) => {
     e.preventDefault();
-    setHorarios([...horarios, { dia, horaInicio, horaFin }]);
+
+    if (!disValidos.has(dia.toLowerCase())) {
+      return Swal.fire("Error", "El día ingresado no está permitido", "error");
+    } else if (
+      !(
+        moment(horaFin, "hh:mm").isValid() &&
+        moment(horaInicio, "hh:mm").isValid()
+      )
+    ) {
+      return Swal.fire(
+        "Error",
+        "Las horas ingresadas no cuplen el formato",
+        "error"
+      );
+    }
+    if (horaFin < horaInicio) {
+      return Swal.fire(
+        "Error",
+        "hora fin debe ser mayor a hora inicio",
+        "error"
+      );
+    }
+    if (
+      horarios.find(
+        (h) =>
+          h.dia === dia.toLowerCase() &&
+          h.horaInicio === horaInicio &&
+          h.horaFin === horaFin
+      )
+    ) {
+      return Swal.fire("Error", "Ya éxiste el horario ingresado", "error");
+    }
+
+    setHorarios([...horarios, { dia: dia.toLowerCase(), horaInicio, horaFin }]);
     restHorario();
   };
 
@@ -65,6 +102,10 @@ export const Tabla = () => {
 
   const onSubmitSeccion = (e) => {
     e.preventDefault();
+    if (!cupos) {
+      return Swal.fire("Los Cupos", "Son requeridos", "error");
+    }
+
     const newSeccion = {
       docente,
       horarios,

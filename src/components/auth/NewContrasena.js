@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import Swal from "sweetalert2";
 import { cambiarContrasena } from "../../actions/auth";
 import { useForm } from "../../hooks/useForm";
 
@@ -15,10 +16,19 @@ export const NewContrasena = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!(newPassword === newPassword2)) {
+      return Swal.fire("Las contraseñas", "deben ser iguales", "error");
+    }
+    if (newPassword.length < 6) {
+      return Swal.fire(
+        "La contraseña",
+        "debe tener al menos 6 caractres",
+        "error"
+      );
+    }
     await cambiarContrasena(newPassword, restToken);
   };
-
-  console.log(restToken);
 
   return (
     <div>
