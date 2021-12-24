@@ -43,7 +43,7 @@ export const Semestres = () => {
                       >
                         <div className="text-end">{asignatura.promedio}</div>{" "}
                         {/*NOTA ASIGNATURA*/}
-                        <p>{asignatura.id.nombre}</p>
+                        <p className="Tamanof">{asignatura.id.nombre}</p>
                       </button>
                       <div
                         className="modal fade"

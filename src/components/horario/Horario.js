@@ -27,8 +27,8 @@ export const Horario = () => {
   ).toDate();
 
   return (
-    <div>
-      <div className="clendarContainer">
+    <div className="">
+      <div className="overflow-auto clendarContainer">
           <Calendar
             localizer={localizer}
             events={horario}

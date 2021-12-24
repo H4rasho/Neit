@@ -105,7 +105,7 @@ export const Inscripcion = ({ history }) => {
           </table>
         </div>
 
-        <div className="col-2 border border-3 border-dark bg-light columna3">
+        <div className="col-2 border border-3 border-dark bg-light container-fluid columna3">
           <div className="border-bottom border-3 border-dark text-center marco3">
             Asignaturas seleccionadas
           </div>
