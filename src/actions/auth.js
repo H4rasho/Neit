@@ -84,3 +84,18 @@ const login = (user) => ({
   type: types.authLogin,
   payload: user,
 });
+
+export const solicitarCambioDeContrasena = async (email) => {
+  const resp = await fetchSinToken("auth/reset-password", { email }, "POST");
+  const body = await resp.json();
+
+  if (body.ok) {
+    Swal.fire(
+      "Estimado",
+      "se ha enviado un email para el cambio de contraseña",
+      "success"
+    );
+  } else {
+    console.log(body.msg);
+  }
+};

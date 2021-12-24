@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HashRouter as Router, Redirect, Switch } from "react-router-dom";
 import { startChecking } from "../actions/auth";
-import { Login } from "../components/auth/Login";
+
 import { validarUserType } from "../helpers/validarUserType";
 import { AdminRoutes } from "./AdminRoutes";
+import { authRoutes } from "./authRoutes";
 
 import { InscriptionRoutes } from "./InscriptionRoutes";
 import { PrivateRoutes } from "./PrivateRoutes";
@@ -31,9 +32,8 @@ export default function AppRouter() {
       <div>
         <Switch>
           <PublicRoutes
-            exact
-            path="/"
-            component={Login}
+            path="/auth"
+            component={authRoutes}
             isAuthenticated={!!uid}
           />
           <PrivateRoutes
@@ -46,7 +46,7 @@ export default function AppRouter() {
             component={AdminRoutes}
             isAuthenticated={loggedAdmin}
           />
-          <Redirect to="/" />
+          <Redirect to="/auth" />
         </Switch>
       </div>
     </Router>

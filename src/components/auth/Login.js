@@ -5,7 +5,7 @@ import { startlogin } from "../../actions/auth";
 import { useForm } from "../../hooks/useForm";
 import "./styles/Login.css";
 
-export const Login = ({ history }) => {
+export const Login = () => {
   const dispatch = useDispatch();
 
   const [values, handleImputChange] = useForm({
@@ -89,7 +89,7 @@ export const Login = ({ history }) => {
                 <label className="form-check-label" htmlFor="flexRadioDefault2">
                   &nbsp;Administrador
                 </label>
-               </div>
+              </div>
 
               <button type="submit" className="btn btn-success mt-4">
                 <i className="fas fa-sign-in-alt"></i> Ingresar{" "}
@@ -97,7 +97,7 @@ export const Login = ({ history }) => {
             </form>
 
             <div className="col-12 mb-4 forgot">
-              <Link to="#">¿Has olvidado tu contraseña?</Link>
+              <Link to="/auth/contrasena">¿Has olvidado tu contraseña?</Link>
             </div>
           </div>
         </div>
