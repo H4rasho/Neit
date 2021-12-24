@@ -25,6 +25,7 @@ export const CambioContrasena = () => {
           name="email"
           onChange={handleInputChange}
         />
+        <button>Enviar</button>
       </form>
     </div>
   );
