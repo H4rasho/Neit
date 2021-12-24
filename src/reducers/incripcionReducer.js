@@ -6,13 +6,9 @@ const initialState = {
   activeAsginatura: null,
   asignaturasDB: [],
   habilitado: true,
-<<<<<<< HEAD
   checking: true,
   horario: [],
   checkingInscripcion: true,
-=======
-  horario: [],
->>>>>>> 8ef41c1add3ab9fa3d6be91911eeb947a2ad54df
 };
 
 export const incripcionReducer = (state = initialState, action) => {
