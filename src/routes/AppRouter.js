@@ -25,8 +25,6 @@ export default function AppRouter() {
     return <h5>Espere</h5>;
   }
 
-  console.log(loggedEstudiante);
-
   return (
     <Router>
       <div>

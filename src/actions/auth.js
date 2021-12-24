@@ -2,6 +2,8 @@ import Swal from "sweetalert2";
 import { fetchConToken, fetchSinToken } from "../helpers/fetch";
 import { types } from "../types/types";
 
+const baseUrl = process.env.REACT_APP_API_URL;
+
 export const startlogin = (email, password, userType) => {
   return async (dispatch) => {
     const resp = await fetchSinToken(
@@ -97,5 +99,24 @@ export const solicitarCambioDeContrasena = async (email) => {
     );
   } else {
     console.log(body.msg);
+  }
+};
+
+export const cambiarContrasena = async (newPassword, restToken) => {
+  const resp = await fetch(`${baseUrl}/auth/change-password`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      resetToken: restToken,
+    },
+    body: JSON.stringify({ newPassword, restToken }),
+  });
+
+  const body = await resp.json();
+
+  if (body.ok) {
+    Swal.fire("!Éxito", body.msg, "success");
+  } else {
+    Swal.fire("Error", body.msg, "error");
   }
 };
